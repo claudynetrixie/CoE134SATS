@@ -12,17 +12,28 @@
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Logo</a>
+      <a href="#" class="brand-logo">Student Attendance Tracking System</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Home</a></li>
-        <li><a href="register/">Register</a></li>
-        <li><a href="collapsible.html">About Us</a></li>
+        <li><a href="/">Home</a></li>
+          {% if user.is_authenticated %}
+             <li><a href="/account">{{user.username|title}}</a></li>
+             <li><a href="/logout">Logout</a></li>
+        {% else %}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+        {% endif %}
           <li><a href="collapsible.html">Contact Us</a></li>
       </ul>
     </div>
   </nav>
-  {% block content %}
-  {% endblock %}
+  {% include 'templates/main/messaging.html' %}
+
+  <div class = "container">
+      {% block content %}
+      {% endblock %}
+
+  </div>
+
 </body>
 
 <!-- Prism JS -->
