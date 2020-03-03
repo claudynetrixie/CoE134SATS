@@ -20,5 +20,7 @@ app_name = "main"
 
 urlpatterns = [
     path("", views.homepage, name = "homepage"),
-    path('tinymce/', include('tinymce.urls'))
+    path('tinymce/', include('tinymce.urls')),
+    path("register/", views.register, name="register")
+
 ]

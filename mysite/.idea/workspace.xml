@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1de28c92-9e68-47af-aa2e-d9026d55d9c2" name="Default Changelist" comment="" />
+    <list default="true" id="1de28c92-9e68-47af-aa2e-d9026d55d9c2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/mysite/main/templates/main/header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/main/templates/main/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mysite/settings.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,6 +21,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1YbErBhHrIgSY0LOraFDbnAoHnf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -44,6 +55,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583222434686">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1583222434686" />
     <state x="853" y="234" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog" timestamp="1583206990368">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
