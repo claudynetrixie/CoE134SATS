@@ -14,6 +14,11 @@ def homepage(request):
                   template_name='templates/main/home.html',
                   context = {"users": UserBuf.objects.all})
 
+def contactus(request):
+    return render(request=request,
+                  template_name='templates/main/contactus.html',
+                  context = {"users": UserBuf.objects.all})
+
 def register(request):
     if request.method == "POST":
         form = NewUserForm(request.POST)
