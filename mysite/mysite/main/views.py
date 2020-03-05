@@ -5,10 +5,15 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
 from .forms import NewUserForm
+from django.contrib.auth.decorators import login_required
 
 
+from django.contrib.auth.models import Group
+from .decorators import unauthenticated_user, allowed_users, admin_only
 # Create your views here.
 
+@login_required(login_url = 'login')
+@admin_only
 def homepage(request):
     return render(request=request,
                   template_name='templates/main/home.html',
@@ -19,6 +24,10 @@ def register(request):
         form = NewUserForm(request.POST)
         if form.is_valid():
             user = form.save()
+
+            group = Group.objects.get(name = 'user')
+            user.groups.add(group)
+
             username = form.cleaned_data.get('username')
             messages.success(request, f"New account created: {username}")
             login(request, user)
@@ -42,6 +51,7 @@ def logout_request(request):
     messages.info(request, "Logged out successfully!")
     return redirect("main:homepage")
 
+@unauthenticated_user
 def login_request(request):
     if request.method == 'POST':
         form = AuthenticationForm(request=request, data=request.POST)
