@@ -25,7 +25,7 @@ urlpatterns = [
     path("register/", views.register, name="register"),
     path("logout", views.logout_request, name = "logout"),
     path("login", views.login_request, name="login"),
-
+    path("contactus/", views.contactus, name="contactus"),
     path('accounts/', include('django.contrib.auth.urls')),
     #path('accounts/signup/', classroom.SignUpView.as_view(), name='signup'),
    # path('accounts/signup/student/', students.StudentSignUpView.as_view(), name='student_signup'),
