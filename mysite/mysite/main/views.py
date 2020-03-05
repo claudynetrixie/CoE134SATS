@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import UserBuf
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
@@ -11,8 +10,11 @@ from django.contrib import messages
 
 def homepage(request):
     return render(request=request,
-                  template_name='templates/main/home.html',
-                  context = {"users": UserBuf.objects.all})
+                  template_name='templates/main/home.html')
+
+def welcome(request):
+    return render(request=request,
+                  template_name='templates/main/welcome.html')
 #
 # def register(request):
 #     if request.method == "POST":

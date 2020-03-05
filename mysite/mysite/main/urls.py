@@ -27,5 +27,5 @@ urlpatterns = [
     #path("logout", views.logout_request, name = "logout"),
     #path("login", views.login_request, name="login"),
     path('accounts/signup/teacher/', teachers.TeacherSignUpView.as_view(), name='teacher_signup'),
-
+    path('accounts/signup/teacher/welcome/', views.welcome, name='teacher_welcome'),
 ]
