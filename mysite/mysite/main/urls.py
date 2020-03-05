@@ -15,19 +15,17 @@ Including another URLconf
 """
 from django.urls import path, include
 from . import views
-#from classroom.views import classroom, students, teachers
+
+from . import teachers
 
 app_name = "main"
 
 urlpatterns = [
     path("", views.homepage, name = "homepage"),
     path('tinymce/', include('tinymce.urls')),
-    path("register/", views.register, name="register"),
-    path("logout", views.logout_request, name = "logout"),
-    path("login", views.login_request, name="login"),
+    #path("register/", views.register, name="register"),
+    #path("logout", views.logout_request, name = "logout"),
+    #path("login", views.login_request, name="login"),
+    path('accounts/signup/teacher/', teachers.TeacherSignUpView.as_view(), name='teacher_signup'),
 
-    path('accounts/', include('django.contrib.auth.urls')),
-    #path('accounts/signup/', classroom.SignUpView.as_view(), name='signup'),
-   # path('accounts/signup/student/', students.StudentSignUpView.as_view(), name='student_signup'),
-    #path('accounts/signup/teacher/', teachers.TeacherSignUpView.as_view(), name='teacher_signup'),
 ]
