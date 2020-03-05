@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+#from django.contrib.auth.models import Post
+#from .models import Post
 
 class NewUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -15,3 +17,12 @@ class NewUserForm(UserCreationForm):
         if commit:
             user.save()
         return user
+'''
+class PostForm(forms.ModelForm):
+
+    class Meta:
+        model = Post
+        fields = ('title', 'text',)
+'''
+class ContactForm(forms.Form):
+    ContactSubject = forms.CharField(label='ContactSubject', max_length=100)
