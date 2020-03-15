@@ -5,7 +5,7 @@ from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
 # from .forms import NewUserForm
 
-from .models import User, Student, Teacher
+from .models import User, Student, Teacher, Parent
 
 
 # Create your views here.

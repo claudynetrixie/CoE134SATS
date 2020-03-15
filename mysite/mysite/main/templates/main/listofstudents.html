@@ -49,7 +49,17 @@
             {% endif %}
         {% endfor %}
     </t>
-
+{% elif user.is_authenticated and user.is_parent%}
+    <t>
+        {{user.username|title}}
+        {% for student in students%}
+            {% for sp in student.parent.all %}
+                {%if sp.user.id == user.id %}
+                    {{student.first_name}}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </t>
 {% else %}
     <t>
         login first
