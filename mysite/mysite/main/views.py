@@ -3,9 +3,9 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
-#from .forms import NewUserForm
+# from .forms import NewUserForm
 
-from .models import User
+from .models import User, Student, Teacher
 
 
 # Create your views here.
@@ -14,19 +14,27 @@ def homepage(request):
     return render(request=request,
                   template_name='templates/main/home.html')
 
+
 def welcome(request):
     return render(request=request,
                   template_name='templates/main/welcome.html')
+
 
 def welcome_parent(request):
     return render(request=request,
                   template_name='templates/main/welcome_parent.html')
 
+
+def list_students(request):
+    return render(request=request,
+                  context={"students": Student.objects.all()},
+                  template_name='templates/main/listofstudents.html')
+
+
 def logout_request(request):
     logout(request)
     messages.info(request, "Logged out successfully!")
     return redirect("main:homepage")
-
 
 
 def login_request(request):
@@ -49,11 +57,9 @@ def login_request(request):
         else:
             messages.error(request, "Invalid username or password.")
     form = AuthenticationForm()
-    return render(request = request,
-                    template_name = "templates/main/login.html",
-                    context={"form":form})
-
-
+    return render(request=request,
+                  template_name="templates/main/login.html",
+                  context={"form": form})
 
 # def register(request):
 #     if request.method == "POST":
@@ -78,8 +84,3 @@ def login_request(request):
 #                   template_name = "templates/main/register.html",
 #                   context={"form":form})
 #
-
-
-
-
-

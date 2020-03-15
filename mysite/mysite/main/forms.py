@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 # from django.contrib.auth.models import User
-from .models import User
+from .models import User, Teacher, Parent
 
 
 # class NewUserForm(UserCreationForm):
@@ -33,6 +33,7 @@ class TeacherSignUpForm(UserCreationForm):
         user.is_teacher = True
         if commit:
             user.save()
+            Teacher.objects.create(user=user)
         return user
 
 
@@ -46,4 +47,5 @@ class ParentSignUpForm(UserCreationForm):
         user.is_parent = True
         if commit:
             user.save()
+            Parent.objects.create(user=user)
         return user

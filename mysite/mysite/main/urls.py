@@ -30,6 +30,7 @@ urlpatterns = [
 
     path('accounts/signup/parent/', parents.ParentSignUpView.as_view(), name='parent_signup'),
     path('accounts/signup/parent/welcome/', views.welcome_parent, name='parent_welcome'),
+    path('students/', views.list_students, name='list_students'),
     path('accounts/signup/teacher/', teachers.TeacherSignUpView.as_view(), name='teacher_signup'),
 
     path('accounts/signup/teacher/welcome/', views.welcome, name='teacher_welcome'),
