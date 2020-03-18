@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'tinymce',
+    'django_filters',
+    'rest_framework',
 ]
 TINYMCE_DEFAULT_CONFIG = {
     'height': 360,

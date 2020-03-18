@@ -1,14 +1,47 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.forms import inlineformset_factory
+
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
 # from .forms import NewUserForm
+from .filters import StudentFilter
 
 from .models import User, Student, Teacher, Parent
 
+from django.shortcuts import get_list_or_404
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
+from .models import Employee
+from .serializers import employeeSerializer
 
 # Create your views here.
+class employeeList(APIView):
+
+    def get(self, request):
+        employee1 = Employee.objects.all()
+        serializer = employeeSerializer(employee1, many = True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        employee1 = Employee.objects.all()[0]
+        serializer = employeeSerializer(data = request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_201_CREATED)
+        return Response(serializer.error_messages, status = status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+
+
+
 
 def homepage(request):
     return render(request=request,
@@ -26,8 +59,12 @@ def welcome_parent(request):
 
 
 def list_students(request):
+    students = Student.objects.all()
+    myFilter = StudentFilter(request.GET, queryset=students)
+    stud = myFilter.qs
+
     return render(request=request,
-                  context={"students": Student.objects.all()},
+                  context={"students": stud, "myFilter": myFilter, "filter": myFilter},
                   template_name='templates/main/listofstudents.html')
 
 

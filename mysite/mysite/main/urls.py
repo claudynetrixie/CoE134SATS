@@ -18,9 +18,12 @@ from . import views
 
 from . import teachers, parents
 
+from rest_framework.urlpatterns import format_suffix_patterns
+
 app_name = "main"
 
 urlpatterns = [
+    path("employees/", views.employeeList.as_view()),
     path("", views.homepage, name = "homepage"),
     path('tinymce/', include('tinymce.urls')),
     #path("register/", views.register, name="register"),

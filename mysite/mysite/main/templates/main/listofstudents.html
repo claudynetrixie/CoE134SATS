@@ -1,57 +1,62 @@
-<head>
-    {% load static %}
-    <!-- Prism CSS -->
-    <link href="{% static "tinymce/css/prism.css" %}" rel="stylesheet">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</head>
+<!--<head>-->
+<!--    {% load static %}-->
+<!--    &lt;!&ndash; Prism CSS &ndash;&gt;-->
+<!--    <link href="{% static "tinymce/css/prism.css" %}" rel="stylesheet">-->
+<!--    &lt;!&ndash; Compiled and minified CSS &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">-->
+<!--    &lt;!&ndash; Compiled and minified JavaScript &ndash;&gt;-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>-->
+<!--</head>-->
 
 
-<body>
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">SATS</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/">Home</a></li>
-<!--          this is a sample-->
-         {% if user.is_authenticated and user.is_teacher  %}
-             <li><a href="/account">{{user.username|title}}</a></li>
-             <li><a href="/logout">Logout</a></li>
-        {% else %}
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
-        {% endif %}
-          <li><a href="collapsible.html">Contact Us</a></li>
-      </ul>
-    </div>
-  </nav>
-  {% include 'templates/main/messaging.html' %}
+<!--<body>-->
+<!--  <nav>-->
+<!--    <div class="nav-wrapper">-->
+<!--      <a href="#" class="brand-logo">SATS</a>-->
+<!--      <ul id="nav-mobile" class="right hide-on-med-and-down">-->
+<!--        <li><a href="/">Home</a></li>-->
+<!--&lt;!&ndash;          this is a sample&ndash;&gt;-->
+<!--         {% if user.is_authenticated and user.is_teacher  %}-->
+<!--             <li><a href="/account">{{user.username|title}}</a></li>-->
+<!--             <li><a href="/logout">Logout</a></li>-->
+<!--        {% else %}-->
+<!--            <li><a href="/login">Login</a></li>-->
+<!--            <li><a href="/register">Register</a></li>-->
+<!--        {% endif %}-->
+<!--          <li><a href="collapsible.html">Contact Us</a></li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--  </nav>-->
+<!--  {% include 'templates/main/messaging.html' %}-->
 
-  <div class = "container">
-      {% block content %}
-      {% endblock %}
+<!--  <div class = "container">-->
+<!--      {% block content %}-->
+<!--      {% endblock %}-->
 
-  </div>
+<!--  </div>-->
 
-</body>
+<!--</body>-->
 
-<!-- Prism JS -->
-<script src="{% static "tinymce/js/prism.js" %}"></script>
+<!--&lt;!&ndash; Prism JS &ndash;&gt;-->
+<!--<script src="{% static "tinymce/js/prism.js" %}"></script>-->
 
 {% if user.is_authenticated and user.is_teacher%}
     <t>
         {{user.username|title}}
+        </br>
         {% for student in students%}
             {%if student.teacher.user.id == user.id %}
                 {{student.first_name}}
+                -
+                {{student.section}}
+                </br>
             {% endif %}
         {% endfor %}
     </t>
 {% elif user.is_authenticated and user.is_parent%}
     <t>
         {{user.username|title}}
+
         {% for student in students%}
             {% for sp in student.parent.all %}
                 {%if sp.user.id == user.id %}
@@ -65,3 +70,54 @@
         login first
     </t>
 {% endif %}
+
+
+<!--<div class="row">-->
+<!--	<div class="col">-->
+<!--		<div class="card card-body">-->
+
+<!--			<form method="get">-->
+<!--				{{filter.form}}-->
+
+<!--		    <button class="btn btn-primary" type="submit">Search</button>-->
+<!--		  </form>-->
+
+<!--		</div>-->
+<!--	</div>-->
+
+<!--</div>-->
+<!--<br>-->
+
+
+    <form method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" />
+    </form>
+
+<!--    {% for obj in filter.qs %}-->
+<!--        {{ obj.name }} - ${{ obj.price }}<br />-->
+<!--    {% endfor %}-->
+
+
+    <div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>First Name</th>
+					<th>Year Level</th>
+				</tr>
+
+				{% for student in students %}
+
+				<tr>
+					<td>{{student.first_name}}</td>
+					<td>{{student.year_level}}</td>
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
