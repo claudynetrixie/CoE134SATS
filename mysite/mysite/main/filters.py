@@ -14,4 +14,12 @@ class StudentFilter(django_filters.FilterSet):
     class Meta:
         model = Student
         fields = '__all__'
-        fields = ['first_name', 'year_level']
+        fields = ['first_name', 'year_level', 'section']
+
+
+class LogFilter(django_filters.FilterSet):
+    date = django_filters.DateFromToRangeFilter()
+
+    class Meta:
+        model = Log
+        fields = ['date', 'id_number']

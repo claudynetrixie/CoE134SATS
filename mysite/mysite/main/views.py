@@ -6,9 +6,9 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
 # from .forms import NewUserForm
-from .filters import StudentFilter
+from .filters import StudentFilter, LogFilter
 
-from .models import User, Student, Teacher, Parent
+from .models import User, Student, Teacher, Parent, Log
 
 from django.shortcuts import get_list_or_404
 from rest_framework.views import APIView
@@ -68,6 +68,32 @@ def list_students(request):
                   template_name='templates/main/listofstudents.html')
 
 
+def stud_attendance(request):
+    students = Student.objects.all()
+    logs = Log.objects.all()
+    #get a list of students that teacher is handling
+    if request.user.is_authenticated and request.user.is_teacher:
+        #list of students
+        stu_list = Student.objects.filter(section = Teacher.objects.get(user_id = request.user.id).section_name)
+        id_num = []
+        for stu in stu_list:
+            id_num.append(stu.id)
+        #get the logs of all those students
+        for id in id_num:
+            if(id == id_num[0]):
+                log_b = Log.objects.filter(id_number=id)
+            else:
+                log_b = log_b | Log.objects.filter(id_number=id)
+        logs = log_b
+
+    myFilter = LogFilter(request.GET, queryset= logs)
+    log = myFilter.qs
+
+    return render(request=request,
+                  context={"logs": log, "myFilter": myFilter, "filter": myFilter, "students": students},
+                  template_name='templates/main/stud_attendance.html')
+
+
 def logout_request(request):
     logout(request)
     messages.info(request, "Logged out successfully!")
@@ -97,27 +123,3 @@ def login_request(request):
     return render(request=request,
                   template_name="templates/main/login.html",
                   context={"form": form})
-
-# def register(request):
-#     if request.method == "POST":
-#         form = NewUserForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             username = form.cleaned_data.get('username')
-#             messages.success(request, f"New account created: {username}")
-#             login(request, user)
-#             return redirect("main:homepage")
-#
-#         else:
-#             for msg in form.error_messages:
-#                 messages.error(request, f"{msg}: {form.error_messages[msg]}")
-#
-#             return render(request=request,
-#                           template_name="templates/main/register.html",
-#                           context={"form": form})
-#
-#     form = NewUserForm
-#     return render(request = request,
-#                   template_name = "templates/main/register.html",
-#                   context={"form":form})
-#

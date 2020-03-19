@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1de28c92-9e68-47af-aa2e-d9026d55d9c2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/filters.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/listofstudents.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/listofstudents.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/views.py" afterDir="false" />
@@ -82,10 +84,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="853" y="234" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog/0.0.1280.680@0.0.1280.680" timestamp="1583206990368" />
-    <state x="337" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1584361252033">
+    <state x="337" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1584621359401">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1584361252033" />
+    <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1584621359401" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

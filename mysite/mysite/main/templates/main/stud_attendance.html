@@ -1,0 +1,87 @@
+{% if user.is_authenticated and user.is_teacher%}
+    <t>
+        {{user.username|title}}
+        </br>
+        {% for student in students%}
+            {%if student.teacher.user.id == user.id %}
+                {{student.first_name}}
+                -
+                {{student.section}}
+                -
+                {{student.id}}
+                </br>
+            {% endif %}
+        {% endfor %}
+    </t>
+{% elif user.is_authenticated and user.is_parent%}
+    <t>
+        {{user.username|title}}
+
+        {% for student in students%}
+            {% for sp in student.parent.all %}
+                {%if sp.user.id == user.id %}
+                    {{student.first_name}}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </t>
+{% else %}
+    <t>
+        login first
+    </t>
+{% endif %}
+
+
+<!--<div class="row">-->
+<!--	<div class="col">-->
+<!--		<div class="card card-body">-->
+
+<!--			<form method="get">-->
+<!--				{{filter.form}}-->
+
+<!--		    <button class="btn btn-primary" type="submit">Search</button>-->
+<!--		  </form>-->
+
+<!--		</div>-->
+<!--	</div>-->
+
+<!--</div>-->
+<!--<br>-->
+
+
+    <form method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" />
+    </form>
+
+<!--    {% for obj in filter.qs %}-->
+<!--        {{ obj.name }} - ${{ obj.price }}<br />-->
+<!--    {% endfor %}-->
+
+
+    <div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Time  </th>
+					<th>Date   </th>
+                    <th>Location      </th>
+                    <th>Id Number</th>
+				</tr>
+
+				{% for log in logs %}
+
+				<tr>
+					<td>{{log.time}}</td>
+					<td>{{log.date}}</td>
+                    <td>{{log.location}}</td>
+                    <td>{{log.id_number.id}}</td>
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+

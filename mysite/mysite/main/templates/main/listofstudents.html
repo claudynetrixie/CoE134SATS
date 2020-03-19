@@ -104,8 +104,9 @@
 		<div class="card card-body">
 			<table class="table table-sm">
 				<tr>
-					<th>First Name</th>
-					<th>Year Level</th>
+					<th>First Name   </th>
+					<th>Year Level   </th>
+                    <th>Section      </th>
 				</tr>
 
 				{% for student in students %}
@@ -113,6 +114,7 @@
 				<tr>
 					<td>{{student.first_name}}</td>
 					<td>{{student.year_level}}</td>
+                    <td>{{student.section}}</td>
 				</tr>
 				{% endfor %}
 
