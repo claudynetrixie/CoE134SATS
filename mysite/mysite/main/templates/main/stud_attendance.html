@@ -68,6 +68,8 @@
 					<th>Date   </th>
                     <th>Location      </th>
                     <th>Id Number</th>
+                    <th>Name</th>
+                    <th>Section</th>
 				</tr>
 
 				{% for log in logs %}
@@ -77,6 +79,8 @@
 					<td>{{log.date}}</td>
                     <td>{{log.location}}</td>
                     <td>{{log.id_number.id}}</td>
+                    <td>{{log.id_number.first_name}}</td>
+                    <td>{{log.id_number.section}}</td>
 				</tr>
 				{% endfor %}
 
@@ -85,3 +89,28 @@
 	</div>
 </div>
 
+
+
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+                    <th>Name</th>
+                    <th>Absences</th>
+				</tr>
+
+
+				{% for name, cnt in att_list %}
+
+				<tr>
+                    <td>{{name}}</td>
+                    <td>{{cnt}}</td>
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>

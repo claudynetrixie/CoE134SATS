@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
 
+from datetime import date
+
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
@@ -75,6 +77,8 @@ def stud_attendance(request):
     if request.user.is_authenticated and request.user.is_teacher:
         #list of students
         stu_list = Student.objects.filter(section = Teacher.objects.get(user_id = request.user.id).section_name)
+        print(stu_list)
+        print(stu_list[0].first_name)
         id_num = []
         for stu in stu_list:
             id_num.append(stu.id)
@@ -86,11 +90,54 @@ def stud_attendance(request):
                 log_b = log_b | Log.objects.filter(id_number=id)
         logs = log_b
 
+
+
+
     myFilter = LogFilter(request.GET, queryset= logs)
     log = myFilter.qs
 
+
+    #get the num of days queried
+    print(request.GET)
+    after =request.GET['date_after'].split("-", 3)
+    before = request.GET['date_before'].split("-", 3)
+    d1 = date( int(after[0]) , int(after[1]), int(after[2]))
+    d0 = date(int(before[0]), int(before[1]), int(before[2]))
+    num_days = (d0 - d1).days + 1
+
+    #count the number of entrance of all student
+    class user_attendance:
+        def __init__(self, name, present_cnt):
+            self.name = name
+            self.present_cnt = present_cnt
+
+    att_list = []
+
+    if request.user.is_authenticated and request.user.is_teacher:
+        for stu in stu_list:
+            user = user_attendance(stu.first_name, 0)
+            att_list.append(user)
+
+        for l in log:
+            for stu in att_list:
+                if(stu.name == l.id_number.first_name):
+                    if(l.location == "Entrance"):
+                        stu.present_cnt = stu.present_cnt + 1
+
+        name_list = []
+        abs_list = []
+        print(num_days)
+        for stu in att_list:
+            name_list.append(stu.name)
+            abs_list.append(num_days - stu.present_cnt)
+
+        att_list = zip(name_list, abs_list)
+        print(att_list)
+
+
+    print(log)
     return render(request=request,
-                  context={"logs": log, "myFilter": myFilter, "filter": myFilter, "students": students},
+                  context={"logs": log, "myFilter": myFilter, "filter": myFilter, "students": students, "att_list": att_list},
                   template_name='templates/main/stud_attendance.html')
 
 
