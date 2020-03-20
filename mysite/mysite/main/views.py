@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
 
-from datetime import date
+from datetime import date, timedelta, datetime
 import datetime
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -64,7 +64,110 @@ def list_students(request):
                   context={"students": stud, "myFilter": myFilter, "filter": myFilter},
                   template_name='templates/main/listofstudents.html')
 
+def child_stats(request):
+    students = Student.objects.all()
+    myFilter = StudentFilter(request.GET, queryset=students)
+    stud = myFilter.qs
+    class user_attendance:
+        def __init__(self, name, present_cnt, late_cnt):
+            self.name = name
+            self.present_cnt = present_cnt
+            self.late_cnt = late_cnt
 
+
+    #get # of children
+    child_cnt = 0
+    child_list = []
+    for stu in students:
+        for sp in stu.parent.all():
+            if(sp.user_id == request.user.id):
+                print(stu.first_name)
+                child_list.append(stu)
+                child_cnt = child_cnt + 1
+
+    print(child_cnt)
+    child_log = []
+    att_list = []
+    ontime = datetime.time(7, 30, 00)
+    #disp logs of all children but separated into columns
+    for ch in child_list:
+        ch_log = Log.objects.filter(id_number = ch.id)
+        print(ch_log)
+        child_log.append(ch_log)
+        user = user_attendance(ch.first_name, 0, 0)
+        att_list.append(user)
+
+    for l, stu in zip(child_log, att_list):
+        print(l[0].id_number.first_name)
+        for log in l:
+            #print(log)
+            if (log.location == "Entrance"):
+                stu.present_cnt = stu.present_cnt + 1
+                if (ontime < log.time):
+                    stu.late_cnt = stu.late_cnt + 1
+
+        print(stu.late_cnt)
+        print(stu.present_cnt)
+
+    name_list = []
+    abs_list = []
+    late_list = []
+    pres_list = []
+
+    d1 = date.today()
+    d0 = date(2020, 3, 1)
+    # num_days = (d0 - d1).days + 1
+    daygenerator = (d0 + timedelta(x + 1) for x in range((d1 - d0).days + 1))
+    num_days = sum(1 for day in daygenerator if day.weekday() < 5)
+
+    print(num_days)
+
+    for stu in att_list:
+        name_list.append(stu.name)
+        abs_list.append(num_days - stu.present_cnt)
+        late_list.append(stu.late_cnt)
+        pres_list.append(num_days - (num_days - stu.present_cnt) - stu.late_cnt)
+
+    user_list = att_list
+    att_list = zip(name_list, abs_list, late_list, pres_list)
+
+    print("Parser")
+    #parse logs into strings
+    logs_parsed = []
+    for l, stu in zip(child_log, user_list):
+        print(l[0].id_number.first_name)
+        name = l[0].id_number.first_name
+        log_p = []
+        for log in l:
+            if (log.location == "Entrance"):
+                buf = name + " arrived in school at " + log.time.strftime("%I:%M %p")
+                print(buf)
+                log_p.append(buf)
+            if(log.location == "Exit"):
+                buf = name + " left school at " + log.time.strftime("%I:%M %p")
+                print(buf)
+                log_p.append(buf)
+            if (log.location == "Clinic"):
+                buf = name + " entered the clinic at " + log.time.strftime("%I:%M %p")
+                print(buf)
+                log_p.append(buf)
+
+        logs_parsed.append(log_p)
+
+
+    for l in logs_parsed:
+        print(l)
+
+
+
+
+
+
+
+
+    return render(request=request,
+                  context={"students": stud, "att_list": att_list, "logs_parsed": logs_parsed},
+                  template_name='templates/main/child_stats.html')
 
 def stud_attendance(request):
     students = Student.objects.all()

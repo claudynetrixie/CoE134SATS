@@ -4,7 +4,10 @@
     <list default="true" id="1de28c92-9e68-47af-aa2e-d9026d55d9c2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/child_stats.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/child_stats.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/listofstudents.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/listofstudents.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/stud_attendance.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/stud_attendance.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,17 +40,17 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/mysite/main/templates/main" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\claudyne\Desktop\CoE134\mysite\mysite\main\templates\main" />
-      <recent name="C:\Users\claudyne\Desktop\CoE134\mysite\mysite\main" />
-      <recent name="C:\Users\claudyne\PycharmProjects\mysite\mysite\main\templates\main" />
-      <recent name="C:\Users\claudyne\PycharmProjects\mysite\mysite\main\templates" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\claudyne\Desktop\CoE134\mysite\mysite\main\templates\main" />
       <recent name="C:\Users\claudyne\Desktop\CoE134\mysite\mysite\main" />
       <recent name="C:\Users\claudyne\PycharmProjects\mysite\venv\Lib\site-packages\django\contrib\admin\templates" />
       <recent name="C:\Users\claudyne\PycharmProjects\mysite\mysite\main" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\claudyne\Desktop\CoE134\mysite\mysite\main\templates\main" />
+      <recent name="C:\Users\claudyne\Desktop\CoE134\mysite\mysite\main" />
+      <recent name="C:\Users\claudyne\PycharmProjects\mysite\mysite\main\templates\main" />
+      <recent name="C:\Users\claudyne\PycharmProjects\mysite\mysite\main\templates" />
     </key>
   </component>
   <component name="SvnConfiguration">

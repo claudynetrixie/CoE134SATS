@@ -35,6 +35,8 @@ urlpatterns = [
     path('accounts/signup/parent/welcome/', views.welcome_parent, name='parent_welcome'),
     path('students/', views.list_students, name='list_students'),
     path('stud_attendance/', views.stud_attendance, name='stud_attendance'),
+    path('child_stats/', views.child_stats, name='child_stats'),
+
     path('accounts/signup/teacher/', teachers.TeacherSignUpView.as_view(), name='teacher_signup'),
 
     path('accounts/signup/teacher/welcome/', views.welcome, name='teacher_welcome'),

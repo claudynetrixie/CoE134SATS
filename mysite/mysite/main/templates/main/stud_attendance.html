@@ -32,31 +32,10 @@
 {% endif %}
 
 
-<!--<div class="row">-->
-<!--	<div class="col">-->
-<!--		<div class="card card-body">-->
-
-<!--			<form method="get">-->
-<!--				{{filter.form}}-->
-
-<!--		    <button class="btn btn-primary" type="submit">Search</button>-->
-<!--		  </form>-->
-
-<!--		</div>-->
-<!--	</div>-->
-
-<!--</div>-->
-<!--<br>-->
-
-
     <form method="get">
         {{ filter.form.as_p }}
         <input type="submit" />
     </form>
-
-<!--    {% for obj in filter.qs %}-->
-<!--        {{ obj.name }} - ${{ obj.price }}<br />-->
-<!--    {% endfor %}-->
 
 
     <div class="row">
@@ -104,7 +83,6 @@
 
 
 				{% for name, cnt, l_cnt in att_list %}
-
 				<tr>
                     <td>{{name}}</td>
                     <td>{{cnt}}</td>
