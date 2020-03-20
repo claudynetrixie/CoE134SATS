@@ -99,14 +99,16 @@
 				<tr>
                     <th>Name</th>
                     <th>Absences</th>
+                    <th>Lates</th>
 				</tr>
 
 
-				{% for name, cnt in att_list %}
+				{% for name, cnt, l_cnt in att_list %}
 
 				<tr>
                     <td>{{name}}</td>
                     <td>{{cnt}}</td>
+                    <td>{{l_cnt}}</td>
 				</tr>
 				{% endfor %}
 
