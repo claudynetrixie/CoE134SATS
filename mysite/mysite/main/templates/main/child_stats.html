@@ -11,6 +11,8 @@
         {% endfor %}
     </t>
 
+    </br>
+
 
 
 
@@ -23,16 +25,18 @@
                     <th>Absent</th>
                     <th>Late</th>
                     <th>Ontime</th>
+                    <th>In school today?</th>
 				</tr>
 
 
-				{% for name, cnt, l_cnt, p_cnt in att_list %}
+				{% for name, cnt, l_cnt, p_cnt, p_today in att_list %}
 
 				<tr>
                     <td>{{name}}</td>
                     <td>{{cnt}}</td>
                     <td>{{l_cnt}}</td>
                     <td>{{p_cnt}}</td>
+                    <td>{{p_today}}</td>
 				</tr>
 				{% endfor %}
 
@@ -50,6 +54,7 @@
                 {{log}}
                 </br>
             {%endfor%}
+            </br>
         {% endfor %}
 
 </div>

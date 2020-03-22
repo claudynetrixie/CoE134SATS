@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.urls import path, include
 from . import views
+from django.conf.urls import url
 
 from . import teachers, parents
 
@@ -24,10 +25,10 @@ app_name = "main"
 
 urlpatterns = [
     path("employees/", views.employeeList.as_view()),
-    path("", views.homepage, name = "homepage"),
+    path("", views.homepage, name="homepage"),
     path('tinymce/', include('tinymce.urls')),
-    #path("register/", views.register, name="register"),
-    path("logout", views.logout_request, name = "logout"),
+    # path("register/", views.register, name="register"),
+    path("logout", views.logout_request, name="logout"),
     path("login", views.login_request, name="login"),
     path("welcome", views.welcome, name='welcome'),
 
@@ -36,8 +37,11 @@ urlpatterns = [
     path('students/', views.list_students, name='list_students'),
     path('stud_attendance/', views.stud_attendance, name='stud_attendance'),
     path('child_stats/', views.child_stats, name='child_stats'),
-
     path('accounts/signup/teacher/', teachers.TeacherSignUpView.as_view(), name='teacher_signup'),
+
+    url(r'^calendar/$', views.CalendarView.as_view(), name='calendar'),
+    url(r'^event/new/$', views.event, name='event_new'),
+    url(r'^event/edit/(?P<event_id>\d+)/$', views.event, name='event_edit'),
 
     path('accounts/signup/teacher/welcome/', views.welcome, name='teacher_welcome'),
 ]
