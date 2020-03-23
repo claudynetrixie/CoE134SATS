@@ -99,17 +99,19 @@ def stud_attendance(request):
     if request.user.is_authenticated and request.user.is_teacher:
         logs, stu_list, id_num = disp_logs(request)
 
-    att_list = []
-    myFilter = LogFilter(request.GET, queryset=logs)
-    log = myFilter.qs
+        att_list = []
+        myFilter = LogFilter(request.GET, queryset=logs)
+        log = myFilter.qs
 
-    if (request.GET):
-        att_list = attendance_filter(request, stu_list, att_list, log)
+        if (request.GET):
+            att_list = attendance_filter(request, stu_list, att_list, log)
 
-    return render(request=request,
+        return render(request=request,
                   context={"logs": log, "myFilter": myFilter, "filter": myFilter, "students": students,
                            "att_list": att_list},
                   template_name='templates/main/stud_attendance.html')
+    else:
+        return render(request = request, template_name='templates/main/stud_attendance.html')
 
 
 def logout_request(request):

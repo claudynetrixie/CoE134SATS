@@ -13,26 +13,8 @@
             {% endif %}
         {% endfor %}
     </t>
-{% elif user.is_authenticated and user.is_parent%}
-    <t>
-        {{user.username|title}}
 
-        {% for student in students%}
-            {% for sp in student.parent.all %}
-                {%if sp.user.id == user.id %}
-                    {{student.first_name}}
-                {% endif %}
-            {% endfor %}
-        {% endfor %}
-    </t>
-{% else %}
-    <t>
-        login first
-    </t>
-{% endif %}
-
-
-    <form method="get">
+        <form method="get">
         {{ filter.form.as_p }}
         <input type="submit" />
     </form>
@@ -94,3 +76,27 @@
 		</div>
 	</div>
 </div>
+
+
+{% elif user.is_authenticated and user.is_parent%}
+    <t>
+        {{user.username|title}}
+        </br>
+        login as teacher to continue
+
+<!--        {% for student in students%}-->
+<!--            {% for sp in student.parent.all %}-->
+<!--                {%if sp.user.id == user.id %}-->
+<!--                    {{student.first_name}}-->
+<!--                {% endif %}-->
+<!--            {% endfor %}-->
+<!--        {% endfor %}-->
+    </t>
+{% else %}
+    <t>
+        login as teacher to continue
+    </t>
+{% endif %}
+
+
+
