@@ -21,8 +21,22 @@ def attendance_filter(request, stu_list, att_list, log):
         d1 = datetime.date(int(after[0]), int(after[1]), int(after[2]))
         d0 = datetime.date(int(before[0]), int(before[1]), int(before[2]))
         #num_days = (d0 - d1).days + 1
-        num_days = abs(np.busday_count(d0,d1))
+        num_days = (np.busday_count(d1,d0))
+        #.weekday (0-monday, 6-sunday)
 
+        if(d1.weekday() < 5):
+            if(d0.weekday() < 5):
+                num_days = num_days + 1
+            else:
+                num_days = num_days
+        else:
+            if (d0.weekday() < 5):
+                num_days = num_days + 1
+            else:
+                num_days = num_days
+
+
+        print("num_days")
         print(num_days)
 
         if request.user.is_authenticated and request.user.is_teacher:
