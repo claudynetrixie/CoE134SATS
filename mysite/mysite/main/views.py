@@ -2,18 +2,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
 
-from datetime import date, timedelta, datetime
-import datetime
-
-from django.urls import reverse_lazy
-
-from django.views import generic
-from django.utils.safestring import mark_safe
-
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
-# from .forms import NewUserForm
 from .filters import StudentFilter, LogFilter
 
 from .attendance_count_t import attendance_filter, disp_logs, get_childstats
