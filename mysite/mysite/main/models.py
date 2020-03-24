@@ -46,6 +46,11 @@ class Log(models.Model):
     date = models.DateField()
     location = models.CharField(max_length=30)
 
+    @property
+    def get_html_url(self):
+        url = reverse('main:event_edit', args=(self.id,))
+        return f'<a href="{url}"> {self.location} </a>'
+
 
 class Employee(models.Model):
     name = models.CharField(max_length=30)
@@ -62,5 +67,5 @@ class Event(models.Model):
 
     @property
     def get_html_url(self):
-        url = reverse('cal:event_edit', args=(self.id,))
+        url = reverse('main:event_edit', args=(self.id,))
         return f'<a href="{url}"> {self.title} </a>'

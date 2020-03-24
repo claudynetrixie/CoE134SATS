@@ -17,7 +17,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from .models import Employee
-from .serializers import employeeSerializer
+from .serializers import employeeSerializer, logSerializer
 
 from datetime import datetime, timedelta, date
 from django.shortcuts import render, get_object_or_404
@@ -33,21 +33,38 @@ from .forms import EventForm
 
 
 # Create your views here.
-class employeeList(APIView):
+# class employeeList(APIView):
+#
+#     def get(self, request):
+#         employee1 = Employee.objects.all()
+#         serializer = employeeSerializer(employee1, many=True)
+#         return Response(serializer.data)
+#
+#     def post(self, request):
+#         employee1 = Employee.objects.all()[0]
+#         serializer = employeeSerializer(data=request.data)
+#
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.error_messages, status=status.HTTP_400_BAD_REQUEST)
 
+
+class LogList(APIView):
     def get(self, request):
-        employee1 = Employee.objects.all()
-        serializer = employeeSerializer(employee1, many=True)
+        log1 = Log.objects.all()
+        serializer = logSerializer(log1, many = True)
         return Response(serializer.data)
 
     def post(self, request):
-        employee1 = Employee.objects.all()[0]
-        serializer = employeeSerializer(data=request.data)
+        log1 = Log.objects.all()[0]
+        serializer = logSerializer(data=request.data)
 
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.error_messages, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 def homepage(request):
@@ -63,11 +80,6 @@ def welcome(request):
 def welcome_parent(request):
     return render(request=request,
                   template_name='templates/main/welcome_parent.html')
-
-
-def calendar(request):
-    return render(request=request,
-                  template_name='templates/main/calendar.html')
 
 
 def list_students(request):
@@ -151,9 +163,14 @@ class CalendarView(generic.ListView):
     template_name = 'templates/main/calendar.html'
 
     def get_context_data(self, **kwargs):
+        # students = Student.objects.all()
+        # att_list, logs_parsed = get_childstats(students, self.request)
+        # print(logs_parsed)
+
         context = super().get_context_data(**kwargs)
         d = get_date(self.request.GET.get('month', None))
-        cal = Calendar(d.year, d.month)
+
+        cal = Calendar(d.year, d.month, self.request.user)
         html_cal = cal.formatmonth(withyear=True)
         context['calendar'] = mark_safe(html_cal)
         context['prev_month'] = prev_month(d)
@@ -185,6 +202,7 @@ def next_month(d):
 
 def event(request, event_id=None):
     instance = Event()
+
     if event_id:
         instance = get_object_or_404(Event, pk=event_id)
     else:
@@ -193,5 +211,5 @@ def event(request, event_id=None):
     form = EventForm(request.POST or None, instance=instance)
     if request.POST and form.is_valid():
         form.save()
-        return HttpResponseRedirect(reverse('cal:calendar'))
-    return render(request, 'cal/event.html', {'form': form})
+        return HttpResponseRedirect(reverse('main:calendar'))
+    return render(request, 'templates/main/event.html', {'form': form})

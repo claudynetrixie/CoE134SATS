@@ -24,10 +24,9 @@ from rest_framework.urlpatterns import format_suffix_patterns
 app_name = "main"
 
 urlpatterns = [
-    path("employees/", views.employeeList.as_view()),
+    path("logs/", views.LogList.as_view()),
     path("", views.homepage, name="homepage"),
     path('tinymce/', include('tinymce.urls')),
-    # path("register/", views.register, name="register"),
     path("logout", views.logout_request, name="logout"),
     path("login", views.login_request, name="login"),
     path("welcome", views.welcome, name='welcome'),
