@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.forms import inlineformset_factory
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -9,19 +9,15 @@ from .filters import StudentFilter, LogFilter
 
 from .attendance_count_t import attendance_filter, disp_logs, get_childstats
 
-from .models import User, Student, Teacher, Parent, Log
 
-from django.shortcuts import get_list_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from .models import Employee
-from .serializers import employeeSerializer, logSerializer
+from .serializers import logSerializer
 
 from datetime import datetime, timedelta, date
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.urls import reverse
 from django.utils.safestring import mark_safe
@@ -31,24 +27,20 @@ from .models import *
 from .utils import Calendar
 from .forms import EventForm
 
+from django.conf import settings
+from twilio.rest import Client
+
 
 # Create your views here.
-# class employeeList(APIView):
-#
-#     def get(self, request):
-#         employee1 = Employee.objects.all()
-#         serializer = employeeSerializer(employee1, many=True)
-#         return Response(serializer.data)
-#
-#     def post(self, request):
-#         employee1 = Employee.objects.all()[0]
-#         serializer = employeeSerializer(data=request.data)
-#
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         return Response(serializer.error_messages, status=status.HTTP_400_BAD_REQUEST)
+def broadcast_sms(request):
+    message_to_broadcast = ("Guess whoooooo")
 
+
+    client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+    #recipient = '+639175126253'
+    recipient = '+639165782882'
+    client.messages.create(to=recipient,from_=settings.TWILIO_NUMBER, body=message_to_broadcast)
+    return HttpResponse("messages sent!", 200)
 
 class LogList(APIView):
     def get(self, request):
@@ -163,10 +155,6 @@ class CalendarView(generic.ListView):
     template_name = 'templates/main/calendar.html'
 
     def get_context_data(self, **kwargs):
-        # students = Student.objects.all()
-        # att_list, logs_parsed = get_childstats(students, self.request)
-        # print(logs_parsed)
-
         context = super().get_context_data(**kwargs)
         d = get_date(self.request.GET.get('month', None))
 

@@ -5,8 +5,7 @@ from django.contrib.auth.models import AbstractUser
 
 from django.core.exceptions import ValidationError
 from django.urls import reverse
-
-import datetime
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class User(AbstractUser):
@@ -16,6 +15,7 @@ class User(AbstractUser):
 
 class Parent(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
+
 
 
 class Teacher(models.Model):

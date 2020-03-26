@@ -24,6 +24,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 app_name = "main"
 
 urlpatterns = [
+
     path("logs/", views.LogList.as_view()),
     path("", views.homepage, name="homepage"),
     path('tinymce/', include('tinymce.urls')),
@@ -41,6 +42,8 @@ urlpatterns = [
     url(r'^calendar/$', views.CalendarView.as_view(), name='calendar'),
     url(r'^event/new/$', views.event, name='event_new'),
     url(r'^event/edit/(?P<event_id>\d+)/$', views.event, name='event_edit'),
+
+    url(r'broadcast$', views.broadcast_sms, name="default"),
 
     path('accounts/signup/teacher/welcome/', views.welcome, name='teacher_welcome'),
 ]

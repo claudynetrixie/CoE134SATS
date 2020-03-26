@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'tinymce',
     'django_filters',
     'rest_framework',
-
+    'phonenumber_field',
 ]
 TINYMCE_DEFAULT_CONFIG = {
     'height': 360,
@@ -154,3 +154,17 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'main.User'
+
+#
+# TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
+# TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
+# TWILIO_NUMBER = os.getenv("TWILIO_NUMBER")
+TWILIO_ACCOUNT_SID='ACd78ec6b36ea882fd4c44cc9a2a3ac7f7' # obtained from twilio.com/console
+TWILIO_AUTH_TOKEN='d81b71f8cb41ad75dd9971dda5751845' # also obtained from twilio.com/console
+TWILIO_NUMBER='+18325007045' # use the number you received when signing up or buy a new number
+
+SMS_BROADCAST_TO_NUMBERS = [
+    "", # use the format +19735551234
+    "",
+    "",
+]
