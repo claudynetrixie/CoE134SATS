@@ -15,38 +15,19 @@ Including another URLconf
 """
 from django.urls import path, include
 from . import views
-from django.conf.urls import url
-
-from . import teachers, parents
-
-from rest_framework.urlpatterns import format_suffix_patterns
+#from classroom.views import classroom, students, teachers
 
 app_name = "main"
 
 urlpatterns = [
-
-    path("logs/", views.LogList.as_view()),
-    path("", views.homepage, name="homepage"),
+    path("", views.homepage, name = "homepage"),
     path('tinymce/', include('tinymce.urls')),
-    path("logout", views.logout_request, name="logout"),
+    path("register/", views.register, name="register"),
+    path("logout", views.logout_request, name = "logout"),
     path("login", views.login_request, name="login"),
-    path("welcome", views.welcome, name='welcome'),
-
-    path('accounts/signup/parent/', parents.ParentSignUpView.as_view(), name='parent_signup'),
-    path('accounts/signup/parent/welcome/', views.welcome_parent, name='parent_welcome'),
-
-    path('students/', views.list_students, name='list_students'),
-    path('students/<section>', views.class_list, name='class_list'),
-
-    path('stud_attendance/', views.stud_attendance, name='stud_attendance'),
-    path('child_stats/', views.child_stats, name='child_stats'),
-    path('accounts/signup/teacher/', teachers.TeacherSignUpView.as_view(), name='teacher_signup'),
-
-    url(r'^calendar/$', views.CalendarView.as_view(), name='calendar'),
-    url(r'^event/new/$', views.event, name='event_new'),
-    url(r'^event/edit/(?P<event_id>\d+)/$', views.event, name='event_edit'),
-
-    url(r'broadcast$', views.broadcast_sms, name="default"),
-
-    path('accounts/signup/teacher/welcome/', views.welcome, name='teacher_welcome'),
+    path("contactus/", views.contactus, name="contactus"),
+    path('accounts/', include('django.contrib.auth.urls')),
+    #path('accounts/signup/', classroom.SignUpView.as_view(), name='signup'),
+   # path('accounts/signup/student/', students.StudentSignUpView.as_view(), name='student_signup'),
+    #path('accounts/signup/teacher/', teachers.TeacherSignUpView.as_view(), name='teacher_signup'),
 ]
