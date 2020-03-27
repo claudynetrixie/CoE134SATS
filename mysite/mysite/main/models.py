@@ -11,12 +11,13 @@ from phonenumber_field.modelfields import PhoneNumberField
 class User(AbstractUser):
     is_teacher = models.BooleanField(default=False)
     is_parent = models.BooleanField(default=False)
+    phone = PhoneNumberField()
+
 
 
 class Parent(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
-
-
+    #phone = PhoneNumberField(null=False, blank=False)
 
 class Teacher(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
@@ -25,9 +26,19 @@ class Teacher(models.Model):
 
 class Student(models.Model):
     STATUS = (
+        ('K', 'K'),
         ('GR1', 'GR1'),
         ('GR2', 'GR2'),
         ('GR3', 'GR3'),
+        ('GR4', 'GR4'),
+        ('GR5', 'GR5'),
+        ('GR6', 'GR6'),
+        ('GR7', 'GR7'),
+        ('GR8', 'GR8'),
+        ('GR9', 'GR9'),
+        ('GR10', 'GR10'),
+        ('GR11', 'GR11'),
+        ('GR12', 'GR12'),
     )
     first_name = models.CharField(max_length=30)
     middle_name = models.CharField(max_length=30)

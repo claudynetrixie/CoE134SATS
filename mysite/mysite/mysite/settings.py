@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", __file__)
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -155,13 +156,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'main.User'
 
-#
-# TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
-# TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
-# TWILIO_NUMBER = os.getenv("TWILIO_NUMBER")
-TWILIO_ACCOUNT_SID='ACd78ec6b36ea882fd4c44cc9a2a3ac7f7' # obtained from twilio.com/console
-TWILIO_AUTH_TOKEN='d81b71f8cb41ad75dd9971dda5751845' # also obtained from twilio.com/console
-TWILIO_NUMBER='+18325007045' # use the number you received when signing up or buy a new number
+
+TWILIO_ACCOUNT_SID = config("TWILIO_ACCOUNT_SID")
+TWILIO_AUTH_TOKEN = config("TWILIO_AUTH_TOKEN")
+TWILIO_NUMBER = config("TWILIO_NUMBER")
 
 SMS_BROADCAST_TO_NUMBERS = [
     "", # use the format +19735551234

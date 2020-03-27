@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
 from django.forms import inlineformset_factory
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -7,17 +7,21 @@ from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
 from .filters import StudentFilter, LogFilter
 
-from .attendance_count_t import attendance_filter, disp_logs, get_childstats
+from .attendance_count_t import attendance_filter, disp_logs, get_childstats, attendance_counter, disp_logs_a, attendance_filter_a
 
+from .models import User, Student, Teacher, Parent, Log
 
+from django.shortcuts import get_list_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from .serializers import logSerializer
+from .models import Employee
+from .serializers import employeeSerializer, logSerializer
 
-from datetime import datetime, timedelta, date
+from datetime import timedelta, date
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.urls import reverse
 from django.utils.safestring import mark_safe
@@ -34,11 +38,8 @@ from twilio.rest import Client
 # Create your views here.
 def broadcast_sms(request):
     message_to_broadcast = ("Guess whoooooo")
-
-
     client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
-    #recipient = '+639175126253'
-    recipient = '+639165782882'
+    recipient = '+639175126253'
     client.messages.create(to=recipient,from_=settings.TWILIO_NUMBER, body=message_to_broadcast)
     return HttpResponse("messages sent!", 200)
 
@@ -73,14 +74,67 @@ def welcome_parent(request):
     return render(request=request,
                   template_name='templates/main/welcome_parent.html')
 
+def class_list(request, section= 'Default'):
+    print(section)
+    #get all the students in this class
+    students = Student.objects.all()
+    class_list = students.filter(section = section)
+
+    logs, stu_list, id_num = disp_logs_a(class_list)
+    print(logs)
+    myFilter = LogFilter(request.GET, queryset=logs)
+    log = myFilter.qs
+
+    att_list =[]
+    if (request.GET):
+        att_list = attendance_filter_a(request, stu_list, att_list, log)
+
+
+    return render(request=request, context = {"section":section, "logs": log, "filter": myFilter, "att_list": att_list},
+                  template_name='templates/main/class_list.html')
 
 def list_students(request):
     students = Student.objects.all()
     myFilter = StudentFilter(request.GET, queryset=students)
+    print(request.GET)
     stud = myFilter.qs
+    print(stud)
+    sections = []
+
+    if(request.GET):
+        if (request.GET['year_level'] == 'K'):
+            sections = ['Kindness', 'Obedience', 'Love']
+        if(request.GET['year_level'] == 'GR1'):
+            sections = ['Joy', 'Justice', 'Loyalty']
+        if (request.GET['year_level'] == 'GR2'):
+            sections = ['Serenity', 'Sincerity', 'Service']
+        if (request.GET['year_level'] == 'GR3'):
+            sections = ['Commitment', 'Compassion', 'Cooperation']
+        if (request.GET['year_level'] == 'GR4'):
+            sections = ['Generosity', 'Gentleness', 'Gratitude']
+        if (request.GET['year_level'] == 'GR5'):
+            sections = ['Hardwork', 'Honesty', 'Humility']
+        if (request.GET['year_level'] == 'GR6'):
+            sections = ['Patience', 'Perseverance', 'Persistence']
+        if (request.GET['year_level'] == 'GR7'):
+            sections = ['Respect', 'Responsibility', 'Resourcefulness']
+        if (request.GET['year_level'] == 'GR8'):
+            sections = ['Teamwork', 'Trustworthy', 'Toughness']
+        if (request.GET['year_level'] == 'GR9'):
+            sections = ['Charity', 'Competence', 'Courage']
+        if (request.GET['year_level'] == 'GR10'):
+            sections = ['Determination', 'Discipline', 'Devotion']
+        if (request.GET['year_level'] == 'GR11'):
+            sections = ['Empathy', 'Excellence', 'Endurance']
+        if (request.GET['year_level'] == 'GR12'):
+            sections = ['Faith', 'Fortitude', 'Friendliness']
+
+
+
+        print(sections)
 
     return render(request=request,
-                  context={"students": stud, "myFilter": myFilter, "filter": myFilter},
+                  context={"students": stud, "myFilter": myFilter, "filter": myFilter, "section_list": sections},
                   template_name='templates/main/listofstudents.html')
 
 
@@ -170,7 +224,7 @@ def get_date(req_month):
     if req_month:
         year, month = (int(x) for x in req_month.split('-'))
         return date(year, month, day=1)
-    return datetime.date.today()
+    return date.today()
 
 
 def prev_month(d):

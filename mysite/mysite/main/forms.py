@@ -6,6 +6,9 @@ from .models import User, Teacher, Parent
 from django.forms import ModelForm, DateInput
 from .models import Event
 
+from phonenumber_field.formfields import PhoneNumberField
+
+
 class TeacherSignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
@@ -21,9 +24,12 @@ class TeacherSignUpForm(UserCreationForm):
 
 
 class ParentSignUpForm(UserCreationForm):
+    phone = PhoneNumberField(required = True)
+
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ("username", "password1", "password2")
+        fields = ("username", "password1", "password2", "phone")
+
 
     def save(self, commit=True):
         user = super(ParentSignUpForm, self).save(commit=False)
