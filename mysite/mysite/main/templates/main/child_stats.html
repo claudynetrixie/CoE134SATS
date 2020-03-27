@@ -1,0 +1,71 @@
+{% if user.is_authenticated and user.is_parent%}
+    <t>
+        {{user.username|title}}
+
+        {% for student in students%}
+            {% for sp in student.parent.all %}
+                {%if sp.user.id == user.id %}
+                    {{student.first_name}}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </t>
+
+    </br>
+
+
+
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+                    <th>Name</th>
+                    <th>Absent</th>
+                    <th>Late</th>
+                    <th>Ontime</th>
+                    <th>In school today?</th>
+				</tr>
+
+
+				{% for name, cnt, l_cnt, p_cnt, p_today in att_list %}
+
+				<tr>
+                    <td>{{name}}</td>
+                    <td>{{cnt}}</td>
+                    <td>{{l_cnt}}</td>
+                    <td>{{p_cnt}}</td>
+                    <td>{{p_today}}</td>
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+</br>
+</br>
+<div>
+
+       {% for l in logs_parsed %}
+            {% for log in l %}
+                {{log}}
+                </br>
+            {%endfor%}
+            </br>
+        {% endfor %}
+
+</div>
+
+
+
+
+
+
+{% else %}
+    <t>
+        login first as parent
+    </t>
+{% endif %}

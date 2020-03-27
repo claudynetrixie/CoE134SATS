@@ -1,0 +1,70 @@
+{% if user.is_authenticated and user.is_teacher%}
+    <t>
+        {{user.username|title}}
+        </br>
+        {% for student in students%}
+            {%if student.teacher.user.id == user.id %}
+                {{student.first_name}}
+                -
+                {{student.section}}
+                </br>
+            {% endif %}
+        {% endfor %}
+    </t>
+{% elif user.is_authenticated and user.is_parent%}
+    <t>
+        {{user.username|title}}
+
+        {% for student in students%}
+            {% for sp in student.parent.all %}
+                {%if sp.user.id == user.id %}
+                    {{student.first_name}}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </t>
+{% else %}
+    <t>
+        login first
+
+    </t>
+    </br>
+
+{% endif %}
+
+
+    <form method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" />
+    </form>
+
+        {% for section in section_list%}
+            <a href="/students/{{section}}">{{section}}</a>
+            </br>
+        {% endfor %}
+
+
+    <div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>First Name   </th>
+					<th>Year Level   </th>
+                    <th>Section      </th>
+				</tr>
+
+				{% for student in students %}
+
+				<tr>
+					<td>{{student.first_name}}</td>
+					<td>{{student.year_level}}</td>
+                    <td>{{student.section}}</td>
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
