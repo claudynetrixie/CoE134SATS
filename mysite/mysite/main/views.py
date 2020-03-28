@@ -90,7 +90,8 @@ def class_list(request, section= 'Default'):
         att_list = attendance_filter_a(request, stu_list, att_list, log)
 
 
-    return render(request=request, context = {"section":section, "logs": log, "filter": myFilter, "att_list": att_list},
+    return render(request=request,
+                  context = {"section":section, "logs": log, "filter": myFilter, "att_list": att_list},
                   template_name='templates/main/class_list.html')
 
 def list_students(request):

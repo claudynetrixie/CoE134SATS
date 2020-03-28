@@ -4,16 +4,9 @@
     <list default="true" id="1de28c92-9e68-47af-aa2e-d9026d55d9c2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/main/attendance_count_t.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/attendance_count_t.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/main/filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/filters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/main/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/class_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/class_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/listofstudents.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/listofstudents.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mysite/.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mysite/.env.swp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mysite/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,9 +60,6 @@
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="TWILIO_ACCOUNT_SID" value="ACd78ec6b36ea882fd4c44cc9a2a3ac7f7" />
-        <env name="TWILIO_AUTH_TOKEN" value="024689c8b1e3d8bb903fbaca6ac73f96" />
-        <env name="TWILIO_NUMBER" value="+18325007045" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\claudyne\PycharmProjects\mysite\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="" />
@@ -100,10 +90,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="448" y="0" width="832" height="680" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585228939101">
+    <state x="448" y="0" width="832" height="680" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585322818289">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="448" y="0" width="832" height="680" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1585228939101" />
+    <state x="448" y="0" width="832" height="680" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1585322818289" />
     <state x="388" y="144" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585220502767">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -116,10 +106,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="853" y="234" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog/0.0.1280.680@0.0.1280.680" timestamp="1583206990368" />
-    <state x="669" y="143" key="EnvironmentVariablesDialog" timestamp="1585228753800">
+    <state x="669" y="143" key="EnvironmentVariablesDialog" timestamp="1585322816299">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="669" y="143" key="EnvironmentVariablesDialog/0.0.1280.680@0.0.1280.680" timestamp="1585228753800" />
+    <state x="669" y="143" key="EnvironmentVariablesDialog/0.0.1280.680@0.0.1280.680" timestamp="1585322816299" />
     <state x="337" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1585250437409">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
