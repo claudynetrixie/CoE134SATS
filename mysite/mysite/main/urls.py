@@ -17,7 +17,7 @@ from django.urls import path, include
 from . import views
 from django.conf.urls import url
 
-from . import teachers, parents, contact_form
+from . import teachers, parents
 
 from rest_framework.urlpatterns import format_suffix_patterns
 

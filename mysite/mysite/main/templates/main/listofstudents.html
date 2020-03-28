@@ -1,3 +1,7 @@
+{% extends 'templates/main/base_cal.html' %}
+{% block content %}
+
+
 <!--{% if user.is_authenticated and user.is_teacher%}-->
 <!--    <t>-->
 <!--        {{user.username|title}}-->
@@ -33,10 +37,15 @@
 <!--{% endif %}-->
 
 {% if user.is_authenticated and user.id == 5%}
+    {% block title %}
+    Year Level Filter
+    {% endblock %}
+
     <form method="get">
-        {{ filter.form.as_p }}
+        {{ filter.form }}
         <input type="submit" />
     </form>
+
 
     {% for section in section_list%}
         <a href="/students/{{section}}">{{section}}</a>
@@ -74,4 +83,4 @@
 
 {% endif %}
 
-
+{% endblock %}

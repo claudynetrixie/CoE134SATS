@@ -34,7 +34,6 @@ from .forms import EventForm, ContactForm
 from django.conf import settings
 from twilio.rest import Client
 
-from django.core.mail import send_mail, BadHeaderError
 
 
 # Create your views here.
@@ -192,12 +191,14 @@ def login_request(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                messages.info(request, f"You are now logged in as {username} {user.is_teacher}")
+                messages.info(request, f"You are now logged in as {username}")
 
                 if user.is_teacher is True:
-                    return redirect('main:welcome')
+                    return redirect('main:stud_attendance')
+                elif user.is_parent is True:
+                    return redirect('main:child_stats')
                 else:
-                    return redirect('/')
+                    return redirect('main:list_students')
             else:
                 messages.error(request, "Invalid username or password.")
         else:

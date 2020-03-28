@@ -12,16 +12,14 @@
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Student Attendance Tracking System</a>
+      <a href="/" class="brand-logo">Student Attendance Tracking System</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/">Home</a></li>
-<!--          this is a sample-->
-         {% if user.is_authenticated and user.is_teacher  %}
+         {% if user.is_authenticated %}
              <li><a href="/account">{{user.username|title}}</a></li>
              <li><a href="/logout">Logout</a></li>
         {% else %}
             <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
         {% endif %}
           <li><a href="/contact_us">Contact Us</a></li>
       </ul>

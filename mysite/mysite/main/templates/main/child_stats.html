@@ -1,4 +1,10 @@
+{% extends 'templates/main/header.html' %}
+{% block content %}
+</br>
+
 {% if user.is_authenticated and user.is_parent%}
+    <a href="/calendar">Calendar</a>
+    </br>
     <t>
         {{user.username|title}}
 
@@ -12,6 +18,8 @@
     </t>
 
     </br>
+
+
 
 
 
@@ -69,3 +77,6 @@
         login first as parent
     </t>
 {% endif %}
+
+
+{% endblock %}

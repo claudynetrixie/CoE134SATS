@@ -1,3 +1,6 @@
+{% extends 'templates/main/header.html' %}
+{% block content %}
+
 {% if user.is_authenticated and user.is_teacher%}
     <t>
         {{user.username|title}}
@@ -99,4 +102,5 @@
 {% endif %}
 
 
+{% endblock %}
 

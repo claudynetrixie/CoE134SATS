@@ -4,9 +4,16 @@
     <list default="true" id="1de28c92-9e68-47af-aa2e-d9026d55d9c2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/main/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/contact_form.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/parents.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/parents.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/teachers.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/teachers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/base_cal.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/base_cal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/child_stats.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/child_stats.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/class_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/class_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/listofstudents.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/listofstudents.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/stud_attendance.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/stud_attendance.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/views.py" afterDir="false" />
     </list>
@@ -100,10 +107,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="388" y="144" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1585220502767" />
-    <state x="334" y="100" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584814735100">
+    <state x="334" y="100" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585417997829">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="334" y="100" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1584814735100" />
+    <state x="334" y="100" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1585417997829" />
     <state x="853" y="234" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog" timestamp="1583206990368">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
