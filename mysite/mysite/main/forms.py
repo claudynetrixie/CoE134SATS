@@ -4,7 +4,10 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import User, Teacher, Parent
 
 from django.forms import ModelForm, DateInput
-from .models import Event
+from .models import Event, Contact_Message
+from django.utils import timezone
+
+import datetime, pytz
 
 from phonenumber_field.formfields import PhoneNumberField
 
@@ -55,3 +58,18 @@ class EventForm(ModelForm):
     # input_formats parses HTML5 datetime-local input to datetime field
     self.fields['start_time'].input_formats = ('%Y-%m-%dT%H:%M',)
     self.fields['end_time'].input_formats = ('%Y-%m-%dT%H:%M',)
+
+class ContactForm(ModelForm):
+    class Meta:
+        model = Contact_Message
+        fields = '__all__'
+        exclude = ['date']
+
+    def save(self, commit=True):
+        message = super(ContactForm, self).save(commit=False)
+        message.date = datetime.datetime.now(pytz.timezone("Asia/Singapore"))
+        print(message.date)
+        if commit:
+            message.save()
+        return message
+

@@ -7,6 +7,7 @@ from django.core.exceptions import ValidationError
 from django.urls import reverse
 from phonenumber_field.modelfields import PhoneNumberField
 
+import datetime
 
 class User(AbstractUser):
     is_teacher = models.BooleanField(default=False)
@@ -80,3 +81,11 @@ class Event(models.Model):
     def get_html_url(self):
         url = reverse('main:event_edit', args=(self.id,))
         return f'<a href="{url}"> {self.title} </a>'
+
+
+class Contact_Message(models.Model):
+    subject = models.CharField(max_length=100)
+    email_address = models.EmailField()
+    message = models.TextField()
+    date = models.DateTimeField(default = datetime.datetime.now())
+

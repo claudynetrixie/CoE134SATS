@@ -17,7 +17,7 @@ from django.urls import path, include
 from . import views
 from django.conf.urls import url
 
-from . import teachers, parents
+from . import teachers, parents, contact_form
 
 from rest_framework.urlpatterns import format_suffix_patterns
 
@@ -32,6 +32,7 @@ urlpatterns = [
     path("login", views.login_request, name="login"),
     path("welcome", views.welcome, name='welcome'),
 
+    path('contact_us/', views.contact_us, name='contact_form'),
     path('accounts/signup/parent/', parents.ParentSignUpView.as_view(), name='parent_signup'),
     path('accounts/signup/parent/welcome/', views.welcome_parent, name='parent_welcome'),
 

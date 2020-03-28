@@ -29,10 +29,12 @@ import calendar as cal_var
 
 from .models import *
 from .utils import Calendar
-from .forms import EventForm
+from .forms import EventForm, ContactForm
 
 from django.conf import settings
 from twilio.rest import Client
+
+from django.core.mail import send_mail, BadHeaderError
 
 
 # Create your views here.
@@ -42,6 +44,8 @@ def broadcast_sms(request):
     recipient = '+639175126253'
     client.messages.create(to=recipient,from_=settings.TWILIO_NUMBER, body=message_to_broadcast)
     return HttpResponse("messages sent!", 200)
+
+
 
 class LogList(APIView):
     def get(self, request):
@@ -242,7 +246,7 @@ def next_month(d):
     month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
     return month
 
-
+#
 def event(request, event_id=None):
     instance = Event()
 
@@ -256,3 +260,11 @@ def event(request, event_id=None):
         form.save()
         return HttpResponseRedirect(reverse('main:calendar'))
     return render(request, 'templates/main/event.html', {'form': form})
+
+def contact_us(request):
+    form = ContactForm(request.POST)
+    if request.POST and form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('main:welcome'))
+
+    return render(request, 'templates/main/contact_us.html', {'form': form})
