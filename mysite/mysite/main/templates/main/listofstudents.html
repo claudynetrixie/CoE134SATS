@@ -37,9 +37,7 @@
 <!--{% endif %}-->
 
 {% if user.is_authenticated and user.id == 5%}
-    {% block title %}
-    Year Level Filter
-    {% endblock %}
+    {% block title %}Year Level Filter{% endblock %}
 
     <form method="get">
         {{ filter.form }}
