@@ -40,7 +40,11 @@ urlpatterns = [
     path('students/<section>', views.class_list, name='class_list'),
 
     path('stud_attendance/', views.stud_attendance, name='stud_attendance'),
+
+
     path('child_stats/', views.child_stats, name='child_stats'),
+    path('child_stats/<name>', views.indiv_stats, name='child_stats'),
+
     path('accounts/signup/teacher/', teachers.TeacherSignUpView.as_view(), name='teacher_signup'),
 
     url(r'^calendar/$', views.CalendarView.as_view(), name='calendar'),

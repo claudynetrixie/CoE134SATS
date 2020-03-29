@@ -144,14 +144,36 @@ def list_students(request):
 
 def child_stats(request):
     students = Student.objects.all()
-    myFilter = StudentFilter(request.GET, queryset=students)
-    stud = myFilter.qs
+    # myFilter = StudentFilter(request.GET, queryset=students)
+    # stud = myFilter.qs
+    # print(stud)
+    user = request.user
+    if user.is_authenticated and user.is_parent:
+        child_list = []
+        for stu in students:
+            for sp in stu.parent.all():
+                if sp.user_id == request.user.id:
+                    child_list.append(stu)
+                    break
 
-    att_list, logs_parsed = get_childstats(students, request)
+        stud = [child_list[0]]
+        att_list, logs_parsed = get_childstats(stud, request)
 
     return render(request=request,
-                  context={"students": stud, "att_list": att_list, "logs_parsed": logs_parsed},
+                  context={"students": students, "att_list": att_list, "logs_parsed": logs_parsed},
                   template_name='templates/main/child_stats.html')
+
+def indiv_stats(request, name = 'Default'):
+    print(name)
+    students = Student.objects.all()
+    stud = Student.objects.get(first_name = name)
+    stud = [stud]
+
+    att_list, logs_parsed = get_childstats(stud, request)
+
+    return render(request=request,
+                  context={"students": students, "att_list": att_list, "logs_parsed": logs_parsed},
+                  template_name='templates/main/indiv_stats.html')
 
 
 def stud_attendance(request):
