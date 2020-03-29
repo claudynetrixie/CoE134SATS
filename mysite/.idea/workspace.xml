@@ -5,8 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/child_stats.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/child_stats.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/indiv_stats.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/indiv_stats.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

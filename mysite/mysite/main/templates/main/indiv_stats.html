@@ -55,13 +55,13 @@ body {
             {% endfor %}
         {% endfor %}
     {% endif %}
+     <a href="/calendar">Calendar</a>
 </div>
 
 <div class="main">
 
 {% if user.is_authenticated and user.is_parent%}
     <h2>Child Stats</h2>
-    <a href="/calendar">Calendar</a>
     </br>
     <t>
         {{user.username|title}}
