@@ -169,7 +169,7 @@ def child_stats(request):
                           context={"students": students,},
                           template_name='templates/main/child_stats.html')
 
-        
+
 def indiv_stats(request, name = 'Default'):
     print(name)
     students = Student.objects.all()
