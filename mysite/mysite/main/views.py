@@ -34,6 +34,9 @@ from .forms import EventForm, ContactForm
 from django.conf import settings
 from twilio.rest import Client
 
+from django.core.mail import send_mail
+
+
 
 
 # Create your views here.
@@ -300,6 +303,12 @@ def contact_us(request):
     form = ContactForm(request.POST)
     if request.POST and form.is_valid():
         form.save()
+        print(request.POST)
+        recipient = request.POST['email_address']
+        subject = request.POST['subject']
+        message = request.POST['message']
+
+        send_mail(subject,message, settings.EMAIL_HOST_USER, [recipient], fail_silently=False)
         return HttpResponseRedirect(reverse('main:welcome'))
 
     return render(request, 'templates/main/contact_us.html', {'form': form})
