@@ -27,7 +27,7 @@ class TeacherSignUpForm(UserCreationForm):
 
 
 class ParentSignUpForm(UserCreationForm):
-    phone = PhoneNumberField(required=True)
+    phone = PhoneNumberField(required=True, help_text='Number should start with +63')
 
     class Meta(UserCreationForm.Meta):
         model = User
