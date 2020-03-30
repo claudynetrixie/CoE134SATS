@@ -156,13 +156,20 @@ def child_stats(request):
                     child_list.append(stu)
                     break
 
-        stud = [child_list[0]]
-        att_list, logs_parsed = get_childstats(stud, request)
+        if(child_list):
+            stud = [child_list[0]]
+            att_list, logs_parsed = get_childstats(stud, request)
 
-    return render(request=request,
+            return render(request=request,
                   context={"students": students, "att_list": att_list, "logs_parsed": logs_parsed},
                   template_name='templates/main/child_stats.html')
 
+        else:
+            return render(request=request,
+                          context={"students": students,},
+                          template_name='templates/main/child_stats.html')
+
+        
 def indiv_stats(request, name = 'Default'):
     print(name)
     students = Student.objects.all()
@@ -182,18 +189,23 @@ def stud_attendance(request):
 
     if request.user.is_authenticated and request.user.is_teacher:
         logs, stu_list, id_num = disp_logs(request)
+        if(stu_list):
+            att_list = []
+            myFilter = LogFilter(request.GET, queryset=logs)
+            log = myFilter.qs
 
-        att_list = []
-        myFilter = LogFilter(request.GET, queryset=logs)
-        log = myFilter.qs
+            if (request.GET):
+                att_list = attendance_filter(request, stu_list, att_list, log)
 
-        if (request.GET):
-            att_list = attendance_filter(request, stu_list, att_list, log)
+            return render(request=request,
+                          context={"logs": log, "myFilter": myFilter, "filter": myFilter, "students": students,
+                                   "att_list": att_list},
+                          template_name='templates/main/stud_attendance.html')
 
-        return render(request=request,
-                  context={"logs": log, "myFilter": myFilter, "filter": myFilter, "students": students,
-                           "att_list": att_list},
-                  template_name='templates/main/stud_attendance.html')
+        else:
+            return render(request=request, template_name='templates/main/stud_attendance.html')
+
+
     else:
         return render(request = request, template_name='templates/main/stud_attendance.html')
 
