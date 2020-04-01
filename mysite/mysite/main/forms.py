@@ -72,3 +72,6 @@ class ContactForm(ModelForm):
         if commit:
             message.save()
         return message
+
+
+

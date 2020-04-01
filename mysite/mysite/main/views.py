@@ -200,6 +200,8 @@ def stud_attendance(request):
             if (request.GET):
                 att_list = attendance_filter(request, stu_list, att_list, log)
 
+                print(myFilter.form)
+
             return render(request=request,
                           context={"logs": log, "myFilter": myFilter, "filter": myFilter, "students": students,
                                    "att_list": att_list},
