@@ -3,7 +3,8 @@
 @import 'bootstrap/mixins';
 
 $font-primary: 'Poppins',Arial, sans-serif;
-$primary: #f8b739;
+$primary: #3445b4;
+$secondary: #44bef1;
 
 body{
 	font-family: $font-primary;
@@ -66,51 +67,35 @@ h1, h2, h3, h4, h5,
 }
 
 
-
-.navbar {
-    padding: 15px 10px;
-    background: #fff;
-    border: none;
-    border-radius: 0;
-    margin-bottom: 40px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-btn {
-    box-shadow: none;
-    outline: none !important;
-    border: none;
-}
-
-.line {
-    width: 100%;
-    height: 1px;
-    border-bottom: 1px dashed #ddd;
-    margin: 40px 0;
-}
-
-
 //SIDEBAR
 .wrapper {
   width: 100%;
 }
 
 #sidebar {
-  min-width: 300px;
-  max-width: 300px;
-  background: #1d1919;
+  min-width: 270px;
+  max-width: 270px;
+  background: $primary;
   color: #fff;
   transition: all 0.3s;
-  &.active{
-  	margin-left: -300px;
+  position: relative;
+  .h6{
+  	color: $white;
   }
-  .logo{
-  	display: block;
-  	width: 120px;
-  	height: 120px;
-  	margin: 0 auto;
-  	span{
-  		display: block;
+  &.active{
+  	margin-left: -270px;
+  }
+  h1{
+  	margin-bottom: 20px;
+  	font-weight: 700;
+  	font-size: 30px;
+  	.logo{
+  		color: $white;
+  		span{
+  			font-size: 14px;
+  			color: $secondary;
+  			display: block;
+  		}
   	}
   }
   ul.components{
@@ -128,25 +113,67 @@ h1, h2, h3, h4, h5,
     	a{
     		padding: 10px 0;
 		    display: block;
-		    color: rgba(255,255,255,.8);
+		    color: rgba(255,255,255,.6);
 		    border-bottom: 1px solid rgba(255,255,255,.1);
+		    span{
+		    	color: $secondary;
+		    }
 		    &:hover{
-		    	color: $primary;
+		    	color: $white;
 		    }
     	}
     	&.active{
     		> a{
     			background: transparent;
-    			color: $primary;
+    			color: $white;
     		}
     	}
     }
   }
   @include media-breakpoint-down(md){
-    margin-left: -300px;
+    margin-left: -270px;
     &.active {
         margin-left: 0;
     }
+  }
+
+  .custom-menu{
+		display: inline-block;
+		position: absolute;
+		top: 20px;
+		right: 0;
+		margin-right: -20px;
+		@include transition(.3s);
+		.btn{
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			position: relative;
+			i{
+				margin-right: -40px;
+				font-size: 14px;
+			}
+			&.btn-primary{
+				background: transparent;
+				border-color: transparent;
+				&:after{
+					z-index: -1;
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					content: '';
+				  transform: rotate(45deg);
+				  background: $primary;
+				  border-radius: 10px;
+				}
+				&:hover, &:focus{
+					background: transparent !important;
+					border-color: transparent !important;
+				}
+			}
+		}
   }
 }
 
@@ -156,11 +183,11 @@ a[data-toggle="collapse"] {
 }
 
 .dropdown-toggle::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
 }
 
 #sidebarCollapse{
@@ -193,5 +220,39 @@ a[data-toggle="collapse"] {
 .footer{
 	p{
 		color: rgba(255,255,255,.5);
+	}
+}
+
+
+
+.form-control {
+	height: 40px!important;
+	background: $white;
+	color: $black;
+	font-size: 13px;
+	border-radius: 4px;
+	box-shadow: none !important;
+	border: transparent;
+	&:focus, &:active {
+		border-color: $black;
+	}
+	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	  color: rgba(255,255,255,.5);
+	}
+	&::-moz-placeholder { /* Firefox 19+ */
+	  color: rgba(255,255,255,.5);
+	}
+	&:-ms-input-placeholder { /* IE 10+ */
+	  color: rgba(255,255,255,.5);
+	}
+	&:-moz-placeholder { /* Firefox 18- */
+	  color: rgba(255,255,255,.5);
+	}
+}
+
+
+.subscribe-form{
+	.form-control{
+		background: lighten($primary,5%);
 	}
 }
