@@ -1,11 +1,11 @@
 {% extends 'templates/main/header.html' %}
 
 {% block main %}
-
-
-<div class="row">
-    <div class="col s12 m3">
-        <div class="card small blue-grey darken-1">
+<!--<div class="row">
+    <div class="col s12 m6">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Get an account now! I am a...</span>
 
                 <div class="card-content white-text">
                   <span class="card-title">Get an account now!</span>
@@ -20,9 +20,56 @@
         </div>
 
 </div>
+</div>
+-->
+<div class="jumbotron">
+  <h1 class="display-4">Hey there!</h1>
+  <p class="lead">You've just stumbled upon Hound - the ultimate way of ensuring the safety of your lovely children with the flexibility rivaling the ears of our very own Toby the Hound!</p>
+  <hr class="my-4">
+  <p>Well, what are you waiting for? Get in with <strong>Hound</strong> today! You are a...?</p>
+  <a class="btn btn-primary btn-lg" href="accounts/signup/teacher" role="button">Teacher</a>
+  <a class="btn btn-primary btn-lg" href="accounts/signup/parent" role="button">Parent</a>
+</div>
+<!--
+<h1 class="display-3 text-center"> Get in with <strong>Hound</strong> today! </h1>
+<h1 class="display-3 text-center">You are a...</h1>
 
+</br>
+</br>
+<div class="btn-group btn-group-lg center" role="group" aria-label="Basic example">
+  <button onclick="location.href='accounts/signup/teacher'" type="button" class="btn btn-secondary">Teacher</button>
+  <button onclick="location.href='accounts/signup/parent'" type="button" class="btn btn-secondary">Parent</button>
+</div>
 
-
+<div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+-->
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">The Special School Treatment</h5>
+        <p class="card-text">Want to get your institution in on hound?</p>
+        <a href="#" class="btn btn-primary">Go here!</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Learn more about us</h5>
+        <p class="card-text">The Hound Team has been having dog days since Jan 2020 working on this project. Want to know what else we do?</p>
+        <a href="#" class="btn btn-primary">Click me!</a>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
 
 
