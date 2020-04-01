@@ -4,8 +4,10 @@
     <list default="true" id="1de28c92-9e68-47af-aa2e-d9026d55d9c2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/child_stats.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/child_stats.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/indiv_stats.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/indiv_stats.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/stud_attendance.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/stud_attendance.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,19 +39,19 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/mysite" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\claudyne\Desktop\CoE134\mysite\mysite" />
-      <recent name="C:\Users\claudyne\Desktop\CoE134\mysite\mysite\main\templates\main" />
-      <recent name="C:\Users\claudyne\Desktop\CoE134\mysite\mysite\main" />
-      <recent name="C:\Users\claudyne\PycharmProjects\mysite\venv\Lib\site-packages\django\contrib\admin\templates" />
-      <recent name="C:\Users\claudyne\PycharmProjects\mysite\mysite\main" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\claudyne\Desktop\CoE134\mysite\mysite\main\static" />
       <recent name="C:\Users\claudyne\Desktop\CoE134\mysite\mysite\main\templates\main\calendar" />
       <recent name="C:\Users\claudyne\Desktop\CoE134\mysite\mysite\main\templates\main" />
       <recent name="C:\Users\claudyne\Desktop\CoE134\mysite\mysite\main\admin\events" />
       <recent name="C:\Users\claudyne\Desktop\CoE134\mysite\mysite\main" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\claudyne\Desktop\CoE134\mysite\mysite" />
+      <recent name="C:\Users\claudyne\Desktop\CoE134\mysite\mysite\main\templates\main" />
+      <recent name="C:\Users\claudyne\Desktop\CoE134\mysite\mysite\main" />
+      <recent name="C:\Users\claudyne\PycharmProjects\mysite\venv\Lib\site-packages\django\contrib\admin\templates" />
+      <recent name="C:\Users\claudyne\PycharmProjects\mysite\mysite\main" />
     </key>
   </component>
   <component name="RunManager">
@@ -89,10 +91,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="448" y="0" width="832" height="680" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585322818289">
+    <state x="448" y="0" width="832" height="680" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585663935508">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="448" y="0" width="832" height="680" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1585322818289" />
+    <state x="448" y="0" width="832" height="680" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1585663935508" />
     <state x="388" y="144" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585220502767">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -113,9 +115,13 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1585250437409" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1584637179393">
+    <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585573101669">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1584637179393" />
+    <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1585573101669" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1585663351738">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1585663351738" />
   </component>
 </project>

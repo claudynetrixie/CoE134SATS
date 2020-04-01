@@ -76,6 +76,11 @@ def disp_logs(request):
 
     print(stu_list)
 
+    if(not stu_list):
+        logs =[]
+        id_num = []
+        return logs, stu_list, id_num
+
     id_num = []
     for stu in stu_list:
         id_num.append(stu.id)
