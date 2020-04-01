@@ -224,6 +224,7 @@ def logout_request(request):
 def login_request(request):
     if request.method == 'POST':
         form = AuthenticationForm(request=request, data=request.POST)
+        print(form)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
@@ -243,6 +244,7 @@ def login_request(request):
         else:
             messages.error(request, "Invalid username or password.")
     form = AuthenticationForm()
+    print(form)
     return render(request=request,
                   template_name="templates/main/login.html",
                   context={"form": form})
@@ -303,6 +305,9 @@ def event(request, event_id=None):
 
 def contact_us(request):
     form = ContactForm(request.POST)
+    print(form)
+    print("next")
+    print(form.as_p)
     if request.POST and form.is_valid():
         form.save()
         print(request.POST)

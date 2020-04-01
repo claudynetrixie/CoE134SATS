@@ -49,6 +49,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 		<link rel="stylesheet" href="{% static "css/style.css" %}">
   </head>
   <body>
@@ -71,6 +72,16 @@
 
 			 {% if user.is_authenticated %}
 				 <li><a href="/account"> <span class = "fa fa-user mr-3"> </span> {{user.username|title}}</a></li>
+				{% if user.is_parent %}
+					{% block nav-parent %}
+					{% endblock %}
+
+				{%endif %}
+
+				{% if user.id == 5 %}
+					<li><a href="/students"> <span class = "fa fa-search mr-3"> </span> Section</a></li>
+				{%endif %}
+
 			{% else %}
 				<li><a href="/login"><span class = "fa fa-sign-in mr-3"> </span>Login</a></li>
 			{% endif %}
@@ -149,6 +160,7 @@
 			  {% endblock %}
 
 		</div>
+
 <!--        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
 <!--        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
       </div>
