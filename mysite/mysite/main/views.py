@@ -310,8 +310,6 @@ def event(request, event_id=None):
 def contact_us(request):
     form = ContactForm(request.POST)
     print(form)
-    print("next")
-    print(form.as_p)
     if request.user.is_authenticated and request.user.is_parent:
         students = Student.objects.all()
     else:
@@ -320,11 +318,12 @@ def contact_us(request):
     if request.POST and form.is_valid():
         form.save()
         print(request.POST)
+        print("valid")
         recipient = request.POST['email_address']
         subject = request.POST['subject']
         message = request.POST['message']
 
         send_mail(subject,message, settings.EMAIL_HOST_USER, [recipient], fail_silently=False)
-        return HttpResponseRedirect(reverse('main:welcome'))
+        return HttpResponseRedirect(reverse('main:homepage'))
 
     return render(request, 'templates/main/contact_us.html', {'form': form, 'students': students})

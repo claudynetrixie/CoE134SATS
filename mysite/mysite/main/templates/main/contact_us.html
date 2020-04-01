@@ -18,23 +18,35 @@
 <!--  </table>-->
 <!--</form>-->
 
-<form>
+<form method="post">
+{% csrf_token %}
   <div class="form-row">
     <div class="col-md-4 mb-3">
-      <label for="validationDefault01">Email</label>
-      <input type="email" class="form-control" id="validationDefault01" placeholder="TobyEmail@hound.com" required>
+      <label for="id_email_address">Email</label>
+      <input type="email" name="email_address" maxlength="254"  class="form-control" required id="id_email_address" placeholder="TobyEmail@hound.com">
     </div>
     <div class="col-md-4 mb-3">
-      <label for="validationDefault02">Subject</label>
-      <input type="text" class="form-control" id="validationDefault02" placeholder="Hi! How's Toby?" required>
+      <label for="id_subject">Subject</label>
+      <input type="text" name="subject" maxlength="100" class="form-control" required id="id_subject" placeholder="Hi! How's Toby?">
     </div>
 
   </div>
   <div class="form-row">
+<!--    <div class="col-md-8 mb-3">-->
+<!--      <label for="id_message">Message</label>-->
+<!--      <input type="text" name= "message" class="form-control" required id="id_message">-->
+<!--    </div>-->
+
     <div class="col-md-8 mb-3">
-      <label for="validationDefault03">Message</label>
-      <input type="text" class="form-control" id="validationDefault03" required>
+        <label for="id_message">Message</label>
+        </br>
+        <textarea name="message" cols="63" rows="8" required id="id_message"></textarea>
     </div>
+<!--    <tr><td colspan="3"><button type="submit" class="btn btn-info right"> Submit </button></td></tr>-->
+
+<!--     <tr><th><label for="id_message">Message:</label></th><td><ul class="errorlist">-->
+<!--        <li>This field is required.</li></ul>-->
+<!--         <textarea name="message" cols="40" rows="10" required id="id_message"></textarea></td></tr>-->
   <!--<div class="form-group">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
@@ -44,8 +56,9 @@
     </div>
   </div> -->
   </br>
+  </div>
   <button class="btn btn-primary" type="submit">Submit form</button>
-</form>
+</>
 
 <!--
 <form>
