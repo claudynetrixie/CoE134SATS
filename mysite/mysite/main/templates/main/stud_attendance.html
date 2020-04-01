@@ -1,3 +1,5 @@
+{% extends 'templates/main/header.html' %}
+{% block main %}
 
 {% if user.is_authenticated and user.is_teacher%}
     <t>
@@ -27,8 +29,6 @@
                 <input type="date" name="date_before" value="2020-03-20" id="id_date_1">
             </td>
         </tr>
-
-
 
         <input type="submit" />
     </form>
@@ -113,4 +113,4 @@
 {% endif %}
 
 
-
+{% endblock %}

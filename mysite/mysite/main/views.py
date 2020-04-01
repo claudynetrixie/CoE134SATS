@@ -67,7 +67,9 @@ class LogList(APIView):
 
 
 def homepage(request):
+    students = Student.objects.all()
     return render(request=request,
+                  context= {'students': students},
                   template_name='templates/main/home.html')
 
 
@@ -308,6 +310,11 @@ def contact_us(request):
     print(form)
     print("next")
     print(form.as_p)
+    if request.user.is_authenticated and request.user.is_parent:
+        students = Student.objects.all()
+    else:
+        students = []
+
     if request.POST and form.is_valid():
         form.save()
         print(request.POST)
@@ -318,4 +325,4 @@ def contact_us(request):
         send_mail(subject,message, settings.EMAIL_HOST_USER, [recipient], fail_silently=False)
         return HttpResponseRedirect(reverse('main:welcome'))
 
-    return render(request, 'templates/main/contact_us.html', {'form': form})
+    return render(request, 'templates/main/contact_us.html', {'form': form, 'students': students})

@@ -42,7 +42,7 @@
 <html lang="en">
   <head>
 	  {% load static %}
-  	<title>Sidebar 05</title>
+  	<title>Hound</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -73,13 +73,24 @@
 			 {% if user.is_authenticated %}
 				 <li><a href="/account"> <span class = "fa fa-user mr-3"> </span> {{user.username|title}}</a></li>
 				{% if user.is_parent %}
-					{% block nav-parent %}
-					{% endblock %}
+					{% for student in students%}
+						{% for sp in student.parent.all %}
+							{%if sp.user.id == user.id %}
+								<li><a href="/child_stats/{{student.first_name}}">
+									<span class = "fa fa-graduation-cap mr-3"> </span>{{student.first_name}}</a></li>
+							{% endif %}
+						{% endfor %}
+					{% endfor %}
 
+   					<li><a href="/calendar"><span class = "fa fa-calendar mr-3"> </span>Calendar</a></li>
 				{%endif %}
-
+<!--				admin-->
 				{% if user.id == 5 %}
 					<li><a href="/students"> <span class = "fa fa-search mr-3"> </span> Section</a></li>
+				{%endif %}
+
+				{% if user.is_teacher %}
+					<li><a href="/stud_attendance"> <span class = "fa fa-search mr-3"> </span> Section</a></li>
 				{%endif %}
 
 			{% else %}

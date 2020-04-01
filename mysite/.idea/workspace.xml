@@ -5,10 +5,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/child_stats.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/child_stats.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/class_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/class_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/contact_us.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/contact_us.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/indiv_stats.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/indiv_stats.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/stud_attendance.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/stud_attendance.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

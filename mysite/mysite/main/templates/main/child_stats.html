@@ -1,29 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends 'templates/main/header.html' %}
+{% block main %}
 
-
-</head>
-<body>
-
-<!--<div class="sidenav">-->
-
-    {% if user.is_authenticated and user.is_parent%}
-        {% for student in students%}
-            {% for sp in student.parent.all %}
-                {%if sp.user.id == user.id %}
-                    <a href="/child_stats/{{student.first_name}}">{{student.first_name}}</a>
-                {% endif %}
-            {% endfor %}
-        {% endfor %}
-
-    <a href="/calendar">Calendar</a>
-    {% endif %}
-
-<!--</div>-->
-
-<div class="main">
 
 {% if user.is_authenticated and user.is_parent%}
     <h2>Child Stats</h2>
@@ -91,14 +68,4 @@
 {% endif %}
 
 
-
-
-</div>
-
-</body>
-</html>
-
-
-
-
-</br>
+{% endblock %}
