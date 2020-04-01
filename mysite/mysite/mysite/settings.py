@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", __file__)
-from decouple import config
+#from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -34,9 +34,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+	'django.contrib.contenttypes',
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'phonenumber_field',
 ]
+SITE_ID = 1
 TINYMCE_DEFAULT_CONFIG = {
     'height': 360,
     'width': 1120,
@@ -157,9 +158,9 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'main.User'
 
 
-TWILIO_ACCOUNT_SID = config("TWILIO_ACCOUNT_SID")
-TWILIO_AUTH_TOKEN = config("TWILIO_AUTH_TOKEN")
-TWILIO_NUMBER = config("TWILIO_NUMBER")
+#TWILIO_ACCOUNT_SID = config("TWILIO_ACCOUNT_SID")
+#TWILIO_AUTH_TOKEN = config("TWILIO_AUTH_TOKEN")
+#TWILIO_NUMBER = config("TWILIO_NUMBER")
 
 SMS_BROADCAST_TO_NUMBERS = [
     "", # use the format +19735551234
