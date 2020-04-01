@@ -13,12 +13,13 @@ class User(AbstractUser):
     is_teacher = models.BooleanField(default=False)
     is_parent = models.BooleanField(default=False)
     phone = PhoneNumberField()
-
+    first_name = models.CharField(max_length=30)
+    middle_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
 
 
 class Parent(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
-    #phone = PhoneNumberField(null=False, blank=False)
 
 class Teacher(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)

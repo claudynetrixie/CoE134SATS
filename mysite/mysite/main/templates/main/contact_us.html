@@ -1,30 +1,79 @@
 {% extends 'templates/main/header.html' %}
-
-{% block content %}
-
-
-<!--{% if form.errors %}-->
-<!--    {% for field in form %}-->
-<!--        {% for error in field.errors %}-->
-<!--            <div class="alert alert-danger">-->
-<!--                {{ field.label }} <strong>{{ error|escape }}</strong>-->
-<!--            </div>-->
-<!--        {% endfor %}-->
-<!--    {% endfor %}-->
-<!--    {% for error in form.non_field_errors %}-->
-<!--        <div class="alert alert-danger">-->
-<!--            {{ field.label }} <strong>{{ error|escape }}</strong>-->
-<!--        </div>-->
-<!--    {% endfor %}-->
-<!--{% endif %}-->
+{% block title %}
+  Contact Us
+{% endblock %}
 
 
+{% block main %}
+<form>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault01">Email</label>
+      <input type="email" class="form-control" id="validationDefault01" placeholder="TobyEmail@hound.com" required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault02">Subject</label>
+      <input type="text" class="form-control" id="validationDefault02" placeholder="Hi! How's Toby?" required>
+    </div>
 
+  </div>
+  <div class="form-row">
+    <div class="col-md-8 mb-3">
+      <label for="validationDefault03">Message</label>
+      <input type="text" class="form-control" id="validationDefault03" required>
+    </div>
+  <!--<div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+      <label class="form-check-label" for="invalidCheck2">
+        Agree to terms and conditions
+      </label>
+    </div>
+  </div> -->
+  <button class="btn btn-primary" type="submit">Submit form</button>
+</form>
+
+<!--
+<form>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Subject</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Message</label>
+    <textarea class="form-control form-control-lg" id="exampleFormControlTextarea1" rows="8"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+-->
+
+<!--
 <form method="post">
   {% csrf_token %}
   <table class="form form-table">
-    {{ form.as_p }}
-    <tr><td colspan="2"><button type="submit" class="btn btn-info right"> Submit </button></td></tr>
+    {{ form.as_p }
+    <tr><td colspan="3"><button type="submit" class="btn btn-info right"> Submit </button></td></tr>
   </table>
 </form>
 {% endblock %}
+-->
+
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                {{ field.label }} <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            {{ field.label }} <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+

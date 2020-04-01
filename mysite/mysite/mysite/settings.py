@@ -34,9 +34,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-	'django.contrib.contenttypes',
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'phonenumber_field',
 ]
-SITE_ID = 1
 TINYMCE_DEFAULT_CONFIG = {
     'height': 360,
     'width': 1120,
@@ -167,3 +166,11 @@ SMS_BROADCAST_TO_NUMBERS = [
     "",
     "",
 ]
+
+
+EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+#EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+#EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")

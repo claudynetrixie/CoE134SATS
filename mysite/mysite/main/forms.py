@@ -15,7 +15,7 @@ from phonenumber_field.formfields import PhoneNumberField
 class TeacherSignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ("username", "password1", "password2")
+        fields = ("username", "first_name", "middle_name", "last_name", "password1", "password2")
 
     def save(self, commit=True):
         user = super(TeacherSignUpForm, self).save(commit=False)
@@ -27,12 +27,11 @@ class TeacherSignUpForm(UserCreationForm):
 
 
 class ParentSignUpForm(UserCreationForm):
-    phone = PhoneNumberField(required = True)
+    phone = PhoneNumberField(required=True, help_text='Number should start with +63')
 
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ("username", "password1", "password2", "phone")
-
+        fields = ("username", "first_name", "middle_name", "last_name", "password1", "password2", "phone")
 
     def save(self, commit=True):
         user = super(ParentSignUpForm, self).save(commit=False)
@@ -44,20 +43,21 @@ class ParentSignUpForm(UserCreationForm):
 
 
 class EventForm(ModelForm):
-  class Meta:
-    model = Event
-    # datetime-local is a HTML5 input type, format to make date time show on fields
-    widgets = {
-      'start_time': DateInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
-      'end_time': DateInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
-    }
-    fields = '__all__'
+    class Meta:
+        model = Event
+        # datetime-local is a HTML5 input type, format to make date time show on fields
+        widgets = {
+            'start_time': DateInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
+            'end_time': DateInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
+        }
+        fields = '__all__'
 
-  def __init__(self, *args, **kwargs):
-    super(EventForm, self).__init__(*args, **kwargs)
-    # input_formats parses HTML5 datetime-local input to datetime field
-    self.fields['start_time'].input_formats = ('%Y-%m-%dT%H:%M',)
-    self.fields['end_time'].input_formats = ('%Y-%m-%dT%H:%M',)
+    def __init__(self, *args, **kwargs):
+        super(EventForm, self).__init__(*args, **kwargs)
+        # input_formats parses HTML5 datetime-local input to datetime field
+        self.fields['start_time'].input_formats = ('%Y-%m-%dT%H:%M',)
+        self.fields['end_time'].input_formats = ('%Y-%m-%dT%H:%M',)
+
 
 class ContactForm(ModelForm):
     class Meta:
