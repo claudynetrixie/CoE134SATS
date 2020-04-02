@@ -164,10 +164,13 @@ def child_stats(request):
 
         if(child_list):
             stud = [child_list[0]]
-            att_list, logs_parsed = get_childstats(stud, request)
+            att_list, logs_parsed, data = get_childstats(stud, request)
+            labels = ['Absent', 'Late', 'Ontime']
+
 
             return render(request=request,
-                  context={"students": students, "att_list": att_list, "logs_parsed": logs_parsed},
+                  context={"students": students, "att_list": att_list, "logs_parsed": logs_parsed,
+                           "labels": labels, "data": data},
                   template_name='templates/main/child_stats.html')
 
         else:
@@ -181,11 +184,13 @@ def indiv_stats(request, name = 'Default'):
     students = Student.objects.all()
     stud = Student.objects.get(first_name = name)
     stud = [stud]
+    labels = ['Absent', 'Late', 'Ontime']
 
-    att_list, logs_parsed = get_childstats(stud, request)
+    att_list, logs_parsed, data = get_childstats(stud, request)
 
     return render(request=request,
-                  context={"students": students, "att_list": att_list, "logs_parsed": logs_parsed},
+                  context={"students": students, "att_list": att_list, "logs_parsed": logs_parsed,
+                           "labels": labels, "data": data},
                   template_name='templates/main/indiv_stats.html')
 
 

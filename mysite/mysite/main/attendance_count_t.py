@@ -154,6 +154,7 @@ def get_childstats(students, request):
     for stu in att_list:
         name_list.append(stu.name)
         abs_list.append(num_days - stu.present_cnt)
+
         late_list.append(stu.late_cnt)
         pres_list.append(num_days - (num_days - stu.present_cnt) - stu.late_cnt)
         if (stu.present_today == 0):
@@ -162,6 +163,7 @@ def get_childstats(students, request):
             pres_today_list.append("Present")
 
     user_list = att_list
+    data = [abs_list[0], late_list[0], pres_list[0]]
     att_list = zip(name_list, abs_list, late_list, pres_list, pres_today_list)
 
     # parse logs into strings
@@ -182,7 +184,7 @@ def get_childstats(students, request):
 
         logs_parsed.append(log_p)
 
-    return att_list, logs_parsed
+    return att_list, logs_parsed, data
 
 
 def attendance_counter(child_list):

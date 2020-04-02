@@ -2,6 +2,7 @@
 {% block main %}
 
 
+
 {% if user.is_authenticated and user.is_parent%}
     <h2>Child Stats</h2>
 
@@ -57,7 +58,36 @@
 </div>
 
 
+<div id="container" style="width: 75%;">
+    <canvas id="pie-chart"></canvas>
+  </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script>
+
+    var config = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ data|safe }},
+          backgroundColor: [
+            '#6170d1', '#4d79ff', '#A9A9A9', '#C0C0C0', '#D3D3D3'
+          ],
+          label: 'Population'
+        }],
+        labels: {{ labels|safe }}
+      },
+      options: {
+        responsive: true
+      }
+    };
+
+    window.onload = function() {
+      var ctx = document.getElementById('pie-chart').getContext('2d');
+      window.myPie = new Chart(ctx, config);
+    };
+
+  </script>
 
 
 
