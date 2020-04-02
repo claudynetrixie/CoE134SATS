@@ -270,7 +270,6 @@ class CalendarView(generic.ListView):
         context['prev_month'] = prev_month(d)
         context['next_month'] = next_month(d)
         context['students'] = Student.objects.all()
-
         return context
 
 
