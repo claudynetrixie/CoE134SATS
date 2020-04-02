@@ -5,11 +5,22 @@
 	{% block title %}
 	Class List
 	{% endblock %}
+	</br>
 	<form method="get">
-		{{ filter.form.as_p }}
+<!--		{{ filter.form.as_p }}-->
+		<tr>
+            <th>
+                <label for="id_date_0">Date:</label>
+            </th>
+            <td>
+                <input type = "date" name="date_after" value="2020-03-01" id="id_date_0">
+                -
+                <input type="date" name="date_before" value="2020-03-20" id="id_date_1">
+            </td>
+        </tr>
 		<input type="submit" />
 	</form>
-
+	<h3>Showing results of {date-before} to {date-after}</h3>
 	 <div class="row">
 		<div class="col-md">
 			<div class="card card-body">

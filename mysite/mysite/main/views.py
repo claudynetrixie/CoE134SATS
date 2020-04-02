@@ -96,6 +96,7 @@ def class_list(request, section= 'Default'):
     att_list =[]
     if (request.GET):
         att_list = attendance_filter_a(request, stu_list, att_list, log)
+        print(myFilter.form)
 
 
     return render(request=request,
