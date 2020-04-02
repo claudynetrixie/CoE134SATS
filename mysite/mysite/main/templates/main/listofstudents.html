@@ -45,10 +45,28 @@
     </form>
 
 
-    {% for section in section_list%}
-        <a href="/students/{{section}}">{{section}}</a>
-        </br>
-    {% endfor %}
+<!--    {% for section in section_list%}-->
+<!--        <a href="/students/{{section}}">{{section}}</a>-->
+<!--        </br>-->
+<!--    {% endfor %}-->
+
+    </br>
+
+    <div class="row row-cols-1 row-cols-md-3">
+        {% for section in section_list%}
+            <div class="col mb-4">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <div class = "center">
+                        <h3 align="center">
+                            <a class="card-title" align="center" href="/students/{{section}}" >{{section}}</a>
+                        </h3>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        {%endfor %}
+    </div>
 
 
     <div class="row">
@@ -74,6 +92,9 @@
             </div>
         </div>
     </div>
+
+
+
 {% else %}
     <t>
         unauthorized

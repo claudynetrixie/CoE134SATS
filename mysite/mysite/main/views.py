@@ -97,10 +97,23 @@ def class_list(request, section= 'Default'):
     if (request.GET):
         att_list = attendance_filter_a(request, stu_list, att_list, log)
         print(myFilter.form)
+        print(dir(request.GET))
+        if(request.GET.keys):
+            after = request.GET['date_after'].split("-")
+            date_after = datetime.date(int(after[0]), int(after[1]), int(after[2]))
+            before = request.GET['date_before'].split("-")
+            date_before = datetime.date(int(before[0]), int(before[1]), int(before[2]))
+        else:
+            date_after = datetime.date.today()
+            date_before = datetime.date(2020, 3, 1)
+    else:
+        date_before = []
+        date_after = []
 
 
     return render(request=request,
-                  context = {"section":section, "logs": log, "filter": myFilter, "att_list": att_list},
+                  context = {"section":section, "logs": log, "filter": myFilter, "att_list": att_list,
+                             "date_before": date_before, "date_after": date_after},
                   template_name='templates/main/class_list.html')
 
 def list_students(request):
