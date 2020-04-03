@@ -52,6 +52,30 @@ class Student(models.Model):
     parent = models.ManyToManyField(Parent)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
 
+class Section(models.Model):
+    name = models.CharField(max_length=30)
+
+class YearLevel(models.Model):
+    STATUS = (
+        ('K', 'K'),
+        ('GR1', 'GR1'),
+        ('GR2', 'GR2'),
+        ('GR3', 'GR3'),
+        ('GR4', 'GR4'),
+        ('GR5', 'GR5'),
+        ('GR6', 'GR6'),
+        ('GR7', 'GR7'),
+        ('GR8', 'GR8'),
+        ('GR9', 'GR9'),
+        ('GR10', 'GR10'),
+        ('GR11', 'GR11'),
+        ('GR12', 'GR12'),
+    )
+    level = models.CharField(max_length=30, choices=STATUS)
+    section = models.ManyToManyField(Section)
+
+
+
 
 class Log(models.Model):
     id_number = models.ForeignKey(Student, on_delete=models.CASCADE)

@@ -125,34 +125,11 @@ def list_students(request):
     sections = []
 
     if(request.GET):
-        if (request.GET['year_level'] == 'K'):
-            sections = ['Kindness', 'Obedience', 'Love']
-        if(request.GET['year_level'] == 'GR1'):
-            sections = ['Joy', 'Justice', 'Loyalty']
-        if (request.GET['year_level'] == 'GR2'):
-            sections = ['Serenity', 'Sincerity', 'Service']
-        if (request.GET['year_level'] == 'GR3'):
-            sections = ['Commitment', 'Compassion', 'Cooperation']
-        if (request.GET['year_level'] == 'GR4'):
-            sections = ['Generosity', 'Gentleness', 'Gratitude']
-        if (request.GET['year_level'] == 'GR5'):
-            sections = ['Hardwork', 'Honesty', 'Humility']
-        if (request.GET['year_level'] == 'GR6'):
-            sections = ['Patience', 'Perseverance', 'Persistence']
-        if (request.GET['year_level'] == 'GR7'):
-            sections = ['Respect', 'Responsibility', 'Resourcefulness']
-        if (request.GET['year_level'] == 'GR8'):
-            sections = ['Teamwork', 'Trustworthy', 'Toughness']
-        if (request.GET['year_level'] == 'GR9'):
-            sections = ['Charity', 'Competence', 'Courage']
-        if (request.GET['year_level'] == 'GR10'):
-            sections = ['Determination', 'Discipline', 'Devotion']
-        if (request.GET['year_level'] == 'GR11'):
-            sections = ['Empathy', 'Excellence', 'Endurance']
-        if (request.GET['year_level'] == 'GR12'):
-            sections = ['Faith', 'Fortitude', 'Friendliness']
-
-
+        year_level = request.GET['year_level']
+        year_level_obj = YearLevel.objects.filter(level = year_level)[0]
+        section_q = year_level_obj.section.all()
+        for sec in section_q:
+            sections.append(sec.name)
 
         print(sections)
 
