@@ -156,7 +156,9 @@ def child_stats(request):
             stud = [child_list[0]]
             att_list, logs_parsed, data = get_childstats(stud, request)
             labels = ['Absent', 'Late', 'Ontime']
-
+            logs_parsed[0].reverse()
+            print(logs_parsed)
+            logs_parsed = [logs_parsed[0][0:6]]
 
             return render(request=request,
                   context={"students": students, "att_list": att_list, "logs_parsed": logs_parsed,
