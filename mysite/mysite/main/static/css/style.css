@@ -8199,7 +8199,8 @@ h1, h2, h3, h4, h5,
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
-  position: relative; }
+  position: relative;
+   }
   #sidebar .h6 {
     color: #fff; }
   #sidebar.active {
