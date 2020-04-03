@@ -228,6 +228,7 @@ def login_request(request):
     if request.method == 'POST':
         form = AuthenticationForm(request=request, data=request.POST)
         print(form)
+
         if form.is_valid():
             print("valid")
             username = form.cleaned_data.get('username')
@@ -246,8 +247,10 @@ def login_request(request):
                     return redirect('main:list_students')
             else:
                 messages.error(request, "Invalid username or password.")
+
         else:
             messages.error(request, "Invalid username or password.")
+
     form = AuthenticationForm()
     print(form)
     return render(request=request,
