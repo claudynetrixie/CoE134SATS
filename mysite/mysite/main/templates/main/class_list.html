@@ -29,7 +29,6 @@
 						<th>Time  </th>
 						<th>Date   </th>
 						<th>Location      </th>
-						<th>Id Number</th>
 						<th>Name</th>
 						<th>Section</th>
 					</tr>
@@ -40,8 +39,7 @@
 						<td>{{log.time}}</td>
 						<td>{{log.date}}</td>
 						<td>{{log.location}}</td>
-						<td>{{log.id_number.id}}</td>
-						<td>{{log.id_number.first_name}}</td>
+						<td>{{log.id_number.last_name}}, {{log.id_number.first_name}}</td>
 						<td>{{log.id_number.section}}</td>
 					</tr>
 					{% endfor %}
