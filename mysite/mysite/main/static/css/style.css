@@ -8189,22 +8189,17 @@ h1, h2, h3, h4, h5,
   background-position: center center; }
 
 .wrapper {
-	display: flex;
   width: 100%; }
 
 #sidebar {
   min-width: 270px;
   max-width: 270px;
-  top: 0;
-    left: 0;
-    height: 100vh;
-    z-index: 999;
   background: #3445b4;
   color: #fff;
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
-  position: fixed;
+  position: relative;
    }
   #sidebar .h6 {
     color: #fff; }
@@ -8237,7 +8232,7 @@ h1, h2, h3, h4, h5,
         color: #44bef1; }
       #sidebar ul li a:hover {
         color: #fff; }
-    #sidebar ul li.active > a, a[aria-expanded="true"] {
+    #sidebar ul li.active > a {
       background: transparent;
       color: #fff; }
   @media (max-width: 991.98px) {
