@@ -13,6 +13,7 @@ class ParentSignUpView(CreateView):
 
     def get_context_data(self, **kwargs):
         kwargs['user_type'] = 'parent'
+        kwargs['parent'] = 1
         return super().get_context_data(**kwargs)
 
     def form_valid(self, form):
