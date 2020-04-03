@@ -327,6 +327,7 @@ def contact_us(request):
         recipient = request.POST['email_address']
         subject = request.POST['subject']
         message = request.POST['message']
+        print(settings.EMAIL_HOST_USER)
 
         send_mail(subject,message, settings.EMAIL_HOST_USER, [recipient], fail_silently=False)
         return HttpResponseRedirect(reverse('main:homepage'))

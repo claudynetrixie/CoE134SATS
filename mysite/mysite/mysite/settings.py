@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import environ
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", __file__)
 #from decouple import config
 from django.contrib.messages import constants as messages
@@ -18,6 +20,9 @@ from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+env = environ.Env()
+environ.Env.read_env()
 
 
 
@@ -174,8 +179,8 @@ EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-#EMAIL_HOST_USER = config("EMAIL_HOST_USER")
-#EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+EMAIL_HOST_USER = env.str("EMAIL_HOST_USER").replace("'", "")
+EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD").replace("'", "")
 
 
 MESSAGE_TAGS = {
