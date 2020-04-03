@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", __file__)
-from decouple import config
+#from decouple import config
 from django.contrib.messages import constants as messages
 
 
