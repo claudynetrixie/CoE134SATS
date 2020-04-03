@@ -57,6 +57,9 @@
 
 	<link rel="stylesheet" href="{% static "css/style.css" %}">
 
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+
  
   </head>
   <body>
@@ -77,8 +80,8 @@
 	          <li class="active">
 	            <a href="/"><span class="fa fa-home mr-3"></span> Home</a>
 	          </li>
-			  <li class="active">
-	            <a href="/"><span class="fa fa-home mr-3"></span> Register</a>
+			  <li>
+	            <a href="/"><span class="fa fa-pencil-square-o mr-3"></span> Register</a>
 	          </li>
 			 {% if user.is_authenticated %}
 				 <li><a href="/account"> <span class = "fa fa-user mr-3"> </span> {{user.username|title}}</a></li>

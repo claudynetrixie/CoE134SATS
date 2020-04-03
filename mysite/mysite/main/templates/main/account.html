@@ -1,0 +1,63 @@
+{% extends 'templates/main/header.html' %}
+{% block main %}
+{% load static %}
+<style>
+    .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #3445b4;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+</style>
+
+</br>
+<div class="card">
+  <img src="{% static "images/user.png" %}" alt="John" style="width:100%" align = "center">
+  </br>
+  <h1>{{user.first_name}} {{user.last_name}}</h1>
+  <p class="title">{{user.email}}</p>
+
+  {% if user.is_teacher %}
+    <p>Teacher</p>
+  {% else %}
+    {% if user.is_parent %}
+      <p class="title">{{user.phone}}</p>
+      <p>Parent</p>
+    {% else %}
+      <p>Admin</p>
+    {% endif %}
+  {% endif%}
+
+  <p><button>Contact</button></p>
+</div>
+
+{%endblock%}

@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from calendar import HTMLCalendar
 from .models import Event, Log, Student
+from liquid import Liquid
 
 
 class Calendar(HTMLCalendar):
@@ -27,9 +28,16 @@ class Calendar(HTMLCalendar):
             if (event.location == "Clinic"):
                 buf = event.id_number.first_name + " entered the clinic at " + event.time.strftime("%I:%M %p") + " on " + str(event.date)
 
-            d += f'<li> {buf} </li>'
+            if(event.id_number.first_name == "Tonicha"):
+                color_num = "#8DD3C7"
+            else:
+                color_num = "#FFFFB3"
+
+            d += f'<li><span style="background:{color_num};"></span>{buf}</li>'
+
         if day != 0:
-            return f"<td><span class='date'>{day}</span><ul> {d} </ul></td>"
+            # return f"<td><span class='date'>{day}</span><ul> {d} </ul></td>"
+            return f"<td><span class='date'>{day}</span><ul><div class='my-legend'><div class='legend-scale' ><ul class='legend-labels' >{d}</ul></div></div></ul></td>"
         return '<td></td>'
 
     # formats a week as a tr

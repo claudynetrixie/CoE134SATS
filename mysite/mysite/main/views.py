@@ -48,6 +48,11 @@ def broadcast_sms(request):
     return HttpResponse("messages sent!", 200)
 
 
+def account(request):
+    students = Student.objects.all()
+    return render(request=request,
+                  context={'students': students},
+                  template_name='templates/main/account.html')
 
 class LogList(APIView):
     def get(self, request):
