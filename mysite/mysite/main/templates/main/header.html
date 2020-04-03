@@ -81,7 +81,9 @@
 	          <li class="active">
 	            <a href="/"><span class="fa fa-home mr-3"></span> Home</a>
 	          </li>
-
+			  <li class="active">
+	            <a href="/"><span class="fa fa-home mr-3"></span> Register</a>
+	          </li>
 			 {% if user.is_authenticated %}
 				 <li><a href="/account"> <span class = "fa fa-user mr-3"> </span> {{user.username|title}}</a></li>
 				{% if user.is_parent %}
