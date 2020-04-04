@@ -7,12 +7,13 @@ Calendar
 <div class='my-legend'>
 <div class='legend-scale' >
   <ul class='legend-labels' >
-    <li><span style='background:#8DD3C7;'></span>Tonicha</li>
-    </br>
-    <li><span style='background:#FFFFB3;'></span>Rodrigo</li>
-<!--    <li><span style='background:#BEBADA;'></span>Three</li>-->
-<!--    <li><span style='background:#FB8072;'></span>Four</li>-->
-<!--    <li><span style='background:#80B1D3;'></span>etc</li>-->
+<!--    <li><span style='background:{{color}};'></span>Tonicha</li>-->
+<!--    </br>-->
+<!--    <li><span style='background:#FFFFB3;'></span>Rodrigo</li>-->
+      {% for child, color in cal_list %}
+        <li><span style='background:{{color}};'></span>{{child}}</li>
+      {% endfor%}
+
   </ul>
 </div>
 </div>

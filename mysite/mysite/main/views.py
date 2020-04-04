@@ -272,12 +272,22 @@ class CalendarView(generic.ListView):
         context = super().get_context_data(**kwargs)
         d = get_date(self.request.GET.get('month', None))
 
-        cal = Calendar(d.year, d.month, self.request.user)
+        students = Student.objects.all()
+        child_list = []
+        for stu in students:
+            for sp in stu.parent.all():
+                if sp.user_id == self.request.user.id:
+                    child_list.append(stu.first_name)
+                    print(stu.first_name)
+
+        colors = ["#8DD3C7", "#FFFFB3", "#BEBADA", "#FB8072", "#80B1D3"]
+        cal= Calendar(d.year, d.month, self.request.user, colors)
         html_cal = cal.formatmonth(withyear=True)
         context['calendar'] = mark_safe(html_cal)
         context['prev_month'] = prev_month(d)
         context['next_month'] = next_month(d)
         context['students'] = Student.objects.all()
+        context['cal_list'] = zip(child_list, colors)
         return context
 
 
