@@ -118,7 +118,7 @@ def get_childstats(students, request):
     ontime = datetime.time(7, 30, 00)
     # disp logs of all children but separated into columns
     for ch in child_list:
-        ch_log = Log.objects.filter(id_number=ch.id)
+        ch_log = Log.objects.filter(id_number=ch.id).order_by('date', 'time')
         child_log.append(ch_log)
         user = user_attendance(ch.first_name, 0, 0, 0)
         att_list.append(user)

@@ -16,7 +16,7 @@ class Calendar(HTMLCalendar):
     # filter events by day
     def formatday(self, day, events, child_list, colors):
         #events_per_day = events.filter(start_time__day=day)
-        events_per_day = events.filter(date__day=day)
+        events_per_day = events.filter(date__day=day).order_by('time')
         d = ''
         for event in events_per_day:
             #d += f'<li> {event.get_html_url} </li>'
@@ -24,15 +24,16 @@ class Calendar(HTMLCalendar):
             #d += f'<li> {event.location} </li>'
             if (event.location == "Entrance"):
                 #buf =event.id_number.first_name + " arrived in school at " + event.time.strftime("%I:%M %p") + " on " + str(event.date)
-                buf = " arrived in school at " + event.time.strftime("%I:%M %p")
+                buf = "IN    (" + event.time.strftime("%I:%M %p") + ")"
 
             if (event.location == "Exit"):
                 #buf = event.id_number.first_name + " left school at " + event.time.strftime("%I:%M %p") + " on " + str(event.date)
-                buf = "left school at " + event.time.strftime("%I:%M %p")
+                buf = "OUT (" + event.time.strftime("%I:%M %p") + ")"
 
             if (event.location == "Clinic"):
                 buf = event.id_number.first_name + " entered the clinic at " + event.time.strftime("%I:%M %p") + " on " + str(event.date)
-                buf = "entered the clinic at " + event.time.strftime("%I:%M %p")
+
+                buf = "CLINIC (" + event.time.strftime("%I:%M %p") + ")"
 
             ctr = 0
             for ch in child_list:

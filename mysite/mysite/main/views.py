@@ -96,7 +96,7 @@ def class_list(request, section= 'Default'):
     logs, stu_list, id_num = disp_logs_a(class_list)
     print(logs)
     myFilter = LogFilter(request.GET, queryset=logs)
-    log = myFilter.qs
+    log = myFilter.qs.order_by('date', 'time')
 
     att_list =[]
     if (request.GET):
@@ -196,14 +196,14 @@ def indiv_stats(request, name = 'Default'):
 
 def stud_attendance(request):
     students = Student.objects.all()
-    logs = Log.objects.all()
+    logs = Log.objects.all().order_by('date', 'time')
 
     if request.user.is_authenticated and request.user.is_teacher:
         logs, stu_list, id_num = disp_logs(request)
         if(stu_list):
             att_list = []
             myFilter = LogFilter(request.GET, queryset=logs)
-            log = myFilter.qs
+            log = myFilter.qs.order_by('date', 'time')
 
             if (request.GET):
                 att_list = attendance_filter(request, stu_list, att_list, log)

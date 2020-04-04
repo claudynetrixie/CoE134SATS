@@ -10,30 +10,42 @@ Calendar
 <!--    <li><span style='background:{{color}};'></span>Tonicha</li>-->
 <!--    </br>-->
 <!--    <li><span style='background:#FFFFB3;'></span>Rodrigo</li>-->
+      <div class="row">
       {% for child, color in cal_list %}
-        <li><span style='background:{{color}};'></span>{{child}}</li>
+          <div class="column">
+            <li><span style='background:{{color}};'></span>{{child}}   </li>
+          </div>
       {% endfor%}
+      </div>
 
   </ul>
 </div>
 </div>
 
 <style type='text/css'>
+   .column {
+      width: 20%;
+    }
+   .column-btn{
+      width: 15%;
+
+   }
+
   .my-legend .legend-title {
     text-align: center;
     margin-bottom: 5px;
     font-weight: bold;
-    font-size: 90%;
+    font-size: 100%;
     }
   .my-legend .legend-scale ul {
     margin: 0;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     padding: 0;
     float: center;
     list-style: none;
     }
   .my-legend .legend-scale ul li {
-    font-size: 80%;
+    font-size: 100%;
     list-style: none;
     margin-left: 0px;
     line-height: 18px;
@@ -44,7 +56,7 @@ Calendar
     display: block;
     float: left;
     height: 16px;
-    width: 30px;
+    width: 16px;
     margin-right: 5px;
     margin-left: 0;
     border: 1px solid #999;
@@ -61,8 +73,14 @@ Calendar
 
 
 <div class="clearfix">
-	<a class="btn btn-info left" href="{% url 'main:calendar' %}?{{ prev_month }}"> Previous Month </a>
-	<a class="btn btn-info right" href="{% url 'main:calendar' %}?{{ next_month }}"> Next Month </a>
+    <div class="row">
+        <div class="column-btn">
+	        <a class="btn btn-info left" href="{% url 'main:calendar' %}?{{ prev_month }}"> Previous Month </a>
+        </div>
+        <div class="column-btn">
+	        <a class="btn btn-info right" href="{% url 'main:calendar' %}?{{ next_month }}"> Next Month </a>
+        </div>
+    </div>
 <!--	<a class="btn btn-info right" href="{% url 'main:event_new' %}"> New Event </a>-->
 </div>
 {% if user.is_authenticated and user.is_parent%}
