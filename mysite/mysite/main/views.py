@@ -35,7 +35,8 @@ from django.conf import settings
 from twilio.rest import Client
 
 from django.core.mail import send_mail
-
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 
 
 
@@ -385,12 +386,16 @@ def calendar_new(request):
 
         if (event.location == "Entrance"):
             buf =event.id_number.first_name + " arrived in school at " + event.time.strftime("%I:%M %p")
+            buf = event.id_number.first_name + ": IN (" + event.time.strftime("%I:%M %p") + ")"
+
 
         if (event.location == "Exit"):
             buf = event.id_number.first_name + " left school at " + event.time.strftime("%I:%M %p")
+            buf = event.id_number.first_name + ": OUT (" + event.time.strftime("%I:%M %p") + ")"
 
         if (event.location == "Clinic"):
             buf = event.id_number.first_name + " entered the clinic at " + event.time.strftime("%I:%M %p")
+            buf = event.id_number.first_name + ": CLINIC (" + event.time.strftime("%I:%M %p") + ")"
 
         if(date_f in dict):
             dict[date_f].append(buf)
@@ -403,4 +408,39 @@ def calendar_new(request):
     print(dict)
 
 
-    return render(request, 'templates/main/calendar-new.html', {'dict': dict})
+    return render(request, 'templates/main/calendar-new.html', {'dict': dict, 'students': students})
+
+def change_password(request):
+    # if request.method == 'POST':
+    #     form = PasswordChangeForm(request.user, request.POST)
+    #     if form.is_valid():
+    #         user = form.save()
+    #         update_session_auth_hash(request, user)  # Important!
+    #         messages.success(request, 'Your password was successfully updated!')
+    #         return redirect('main:change_password')
+    #     else:
+    #         messages.error(request, 'Please correct the error below.')
+    # else:
+    #     form = PasswordChangeForm(request.user)
+    # return render(request, 'templates/main/change_password.html', {
+    #     'form': form
+    # })
+
+
+    if request.method == 'POST':
+            form = PasswordChangeForm(data=request.POST, user=request.user)
+
+            if form.is_valid():
+                form.save()
+                update_session_auth_hash(request, form.user)
+                messages.success(request, 'Your password was successfully updated!')
+                return redirect(reverse('main:account'))
+            else:
+                messages.error(request, 'Please correct the error below.')
+                return redirect(reverse('main:change_password'))
+
+    else:
+        form = PasswordChangeForm(user=request.user)
+
+        args = {'form': form}
+        return render(request, 'templates/main/change_password.html', args)

@@ -44,6 +44,7 @@ urlpatterns = [
     path('account/', views.account, name='account'),
 
     path('calendar-new', views.calendar_new, name= 'calendar-new'),
+    url('password/', views.change_password, name='change_password'),
 
 
     path('child_stats/', views.child_stats, name='child_stats'),

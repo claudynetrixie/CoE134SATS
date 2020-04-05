@@ -84,7 +84,7 @@
 	            <a href="/"><span class="fa fa-pencil-square-o mr-3"></span> Register</a>
 	          </li>
 			 {% if user.is_authenticated %}
-				 <li><a href="/account"> <span class = "fa fa-user mr-3"> </span> {{user.username|title}}</a></li>
+				 <li><a href="/account"> <span class = "fa fa-user mr-3"> </span>  {{user.username|title}}</a></li>
 				{% if user.is_parent %}
 					{% for student in students%}
 						{% for sp in student.parent.all %}
