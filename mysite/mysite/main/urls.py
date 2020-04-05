@@ -43,6 +43,8 @@ urlpatterns = [
 
     path('account/', views.account, name='account'),
 
+    path('calendar-new', views.calendar_new, name= 'calendar-new'),
+
 
     path('child_stats/', views.child_stats, name='child_stats'),
     path('child_stats/<name>', views.indiv_stats, name='child_stats'),

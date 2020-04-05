@@ -348,3 +348,48 @@ def contact_us(request):
         return HttpResponseRedirect(reverse('main:homepage'))
 
     return render(request, 'templates/main/contact_us.html', {'form': form, 'students': students})
+
+def calendar_new(request):
+    #make dictionary with logs
+    students = Student.objects.all()
+    events = []
+    child_list = []
+    child_name = []
+    child_cnt = 0
+    for stu in students:
+        for sp in stu.parent.all():
+            if sp.user_id == request.user.id:
+                child_list.append(stu)
+                print(stu.first_name)
+                child_name.append(stu.first_name)
+                child_cnt = child_cnt + 1
+
+    for ch in child_list:
+        if (ch == child_list[0]):
+            events = Log.objects.filter(id_number=ch.id)
+        else:
+            events_new = Log.objects.filter(id_number=ch.id)
+            events = events_new | events
+
+    events_sorted = events.order_by('date', 'time')
+    print(events_sorted)
+
+    dict = {}
+
+    dict['8/3/2020'] = ["test_vent"]
+    dict['9/3/2020'] = ["test_1"]
+
+    # for event in events_sorted:
+    #     if (event.location == "Entrance"):
+    #         buf =event.id_number.first_name + " arrived in school at " + event.time.strftime("%I:%M %p") + " on " + str(event.date)
+    #
+    #     if (event.location == "Exit"):
+    #         buf = event.id_number.first_name + " left school at " + event.time.strftime("%I:%M %p") + " on " + str(event.date)
+    #
+    #     if (event.location == "Clinic"):
+    #         buf = event.id_number.first_name + " entered the clinic at " + event.time.strftime("%I:%M %p") + " on " + str(event.date)
+    #
+    #     print(buf)
+
+
+    return render(request, 'templates/main/calendar-new.html', {'dict': dict})
