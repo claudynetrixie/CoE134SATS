@@ -376,20 +376,31 @@ def calendar_new(request):
 
     dict = {}
 
-    dict['8/3/2020'] = ["test_vent"]
-    dict['9/3/2020'] = ["test_1"]
+    for event in events_sorted:
+        date = str(event.date).split("-")
+        month = str(int(date[1]) -1)
+        day = str(date[2])
+        year = str(date[0])
+        date_f = f'{day}/{month}/{year}'
 
-    # for event in events_sorted:
-    #     if (event.location == "Entrance"):
-    #         buf =event.id_number.first_name + " arrived in school at " + event.time.strftime("%I:%M %p") + " on " + str(event.date)
-    #
-    #     if (event.location == "Exit"):
-    #         buf = event.id_number.first_name + " left school at " + event.time.strftime("%I:%M %p") + " on " + str(event.date)
-    #
-    #     if (event.location == "Clinic"):
-    #         buf = event.id_number.first_name + " entered the clinic at " + event.time.strftime("%I:%M %p") + " on " + str(event.date)
-    #
-    #     print(buf)
+        if (event.location == "Entrance"):
+            buf =event.id_number.first_name + " arrived in school at " + event.time.strftime("%I:%M %p")
+
+        if (event.location == "Exit"):
+            buf = event.id_number.first_name + " left school at " + event.time.strftime("%I:%M %p")
+
+        if (event.location == "Clinic"):
+            buf = event.id_number.first_name + " entered the clinic at " + event.time.strftime("%I:%M %p")
+
+        if(date_f in dict):
+            dict[date_f].append(buf)
+        else:
+            dict[date_f] = [buf]
+
+
+        print(buf)
+
+    print(dict)
 
 
     return render(request, 'templates/main/calendar-new.html', {'dict': dict})

@@ -42,7 +42,7 @@ body {
 .calendar {
   background: white;
   width: 840px;
-  height: 490px;
+  height: 580px;
   border-radius: 10px;
   overflow: hidden; }
   .calendar .calendar-left-side-day-of-week, .calendar .current-day-events ul, .calendar .add-event-day, .calendar .calendar-change-year, .calendar .calendar-days li {

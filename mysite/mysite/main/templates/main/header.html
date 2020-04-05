@@ -96,6 +96,7 @@
 					{% endfor %}
 
    					<li><a href="/calendar"><span class = "fa fa-calendar mr-3"> </span> Calendar</a></li>
+					<li><a href="/calendar-new"><span class = "fa fa-calendar mr-3"> </span> Calendar2</a></li>
 				{%endif %}
 <!--				admin-->
 				{% if user.id == 5 %}
@@ -174,8 +175,8 @@
 
         <!-- Page Content  -->
 
-
       <div id="content" class="p-4 p-md-5 pt-5">
+
 		{% include 'templates/main/messaging.html' %}
 <!--	  	<div class = "container">-->
 <!--			  {% block title %}-->

@@ -45,7 +45,7 @@ class CALENDAR {
 
     drawEvents() {
         let calendar = this.getCalendar();
-        let eventList = this.eventList[calendar.active.formatted] || ['There is not any events'];
+        let eventList = this.eventList[calendar.active.formatted] || ['No events'];
         let eventTemplate = "";
         eventList.forEach(item => {
             eventTemplate += `<li>${item}</li>`;
@@ -178,7 +178,6 @@ class CALENDAR {
             let dateFormatted = this.getFormattedDate(new Date(this.date));
             if (!this.eventList[dateFormatted]) this.eventList[dateFormatted] = [];
             this.eventList[dateFormatted].push(fieldValue);
-            //localStorage.setItem(localStorageName, JSON.stringify(this.eventList));
             this.elements.eventField.value = '';
             this.drawAll()
         });
