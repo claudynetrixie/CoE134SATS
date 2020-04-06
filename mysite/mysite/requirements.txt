@@ -1,0 +1,11 @@
+django==2.2
+djangorestframework
+django-tinymce4-lite
+django-filters
+django-phonenumber-field[phonenumberslite]
+numpy
+pandas
+twilio
+django-twilio
+django-environ
+liquidpy

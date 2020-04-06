@@ -46,7 +46,6 @@ urlpatterns = [
     path('calendar-new', views.calendar_new, name= 'calendar-new'),
     url('password/', views.change_password, name='change_password'),
 
-
     path('child_stats/', views.child_stats, name='child_stats'),
     path('child_stats/<name>', views.indiv_stats, name='child_stats'),
 
