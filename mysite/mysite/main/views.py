@@ -42,11 +42,43 @@ from django.contrib.auth.forms import PasswordChangeForm
 
 # Create your views here.
 def broadcast_sms(request):
-    message_to_broadcast = ("Guess whoooooo")
-    client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
-    recipient = '+639175126253'
-    client.messages.create(to=recipient,from_=settings.TWILIO_NUMBER, body=message_to_broadcast)
-    return HttpResponse("messages sent!", 200)
+    time = request.data['time']
+    date = request.data['date']
+    time_obj = datetime.datetime.strptime(time, '%H:%M:%S').time().strftime("%I:%M %p")
+
+    location = request.data['location']
+    user = Student.objects.filter(id = request.data['id_number'])[0]
+    parents = user.parent.values()
+    parent_numbers = []
+
+    for parent in parents:
+        parent_user = User.objects.get(id = parent['id'])
+        parent_numbers.append(str(parent_user.phone))
+
+    print(parent_numbers)
+
+
+    if (location == "Entrance"):
+        buf = user.first_name + " arrived in school at " + time_obj + " on " + str(date)
+
+    if (location == "Exit"):
+        buf = user.first_name + " left school at " + time_obj + " on " + str(date)
+
+    if (location == "Clinic"):
+        buf = user.first_name + " entered the clinic at " + time_obj + " on " + str(date)
+
+
+
+    print(buf)
+
+    #recipient = '+639175126253'
+    print(settings.TWILIO_ACCOUNT_SID)
+    print(settings.TWILIO_NUMBER)
+    print(settings.TWILIO_AUTH_TOKEN)
+    for recipient in parent_numbers:
+        client = Client(settings.TWILIO_ACCOUNT_SID.replace(" ", ""), settings.TWILIO_AUTH_TOKEN)
+        client.messages.create(to=recipient,from_=settings.TWILIO_NUMBER, body=buf)
+
 
 
 def account(request):
@@ -62,11 +94,12 @@ class LogList(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        log1 = Log.objects.all()[0]
         serializer = logSerializer(data=request.data)
+        print(request.data)
 
         if serializer.is_valid():
             serializer.save()
+            broadcast_sms(request)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.error_messages, status=status.HTTP_400_BAD_REQUEST)
 

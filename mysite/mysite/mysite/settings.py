@@ -164,9 +164,9 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'main.User'
 
 
-#TWILIO_ACCOUNT_SID = config("TWILIO_ACCOUNT_SID")
-#TWILIO_AUTH_TOKEN = config("TWILIO_AUTH_TOKEN")
-#TWILIO_NUMBER = config("TWILIO_NUMBER")
+TWILIO_ACCOUNT_SID = env.str("TWILIO_ACCOUNT_SID").replace("'", "")
+TWILIO_AUTH_TOKEN = env.str("TWILIO_AUTH_TOKEN").replace("'", "")
+TWILIO_NUMBER = env.str("TWILIO_NUMBER").replace("'", "")
 
 SMS_BROADCAST_TO_NUMBERS = [
     "", # use the format +19735551234
