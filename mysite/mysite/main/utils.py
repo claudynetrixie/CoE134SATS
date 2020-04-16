@@ -18,6 +18,7 @@ class Calendar(HTMLCalendar):
         #events_per_day = events.filter(start_time__day=day)
         events_per_day = events.filter(date__day=day).order_by('time')
         d = ''
+        buf = ''
         for event in events_per_day:
             #d += f'<li> {event.get_html_url} </li>'
             #print(event.id_number.first_name)

@@ -4,11 +4,7 @@
     <list default="true" id="1de28c92-9e68-47af-aa2e-d9026d55d9c2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/calendar-new.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/calendar-new.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/main/templates/main/signup_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/templates/main/signup_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mysite/.env" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mysite/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mysite/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/main/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/main/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +35,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="GitIgnore" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/mysite/main/templates/main" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -113,10 +110,18 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="669" y="143" key="EnvironmentVariablesDialog/0.0.1280.680@0.0.1280.680" timestamp="1585322816299" />
-    <state x="337" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1585846612913">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1586262202554">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1585846612913" />
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1586262202554" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1586263425088">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1586263425088" />
+    <state x="337" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1587039354485">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1587039354485" />
     <state x="450" y="258" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586097266785">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
